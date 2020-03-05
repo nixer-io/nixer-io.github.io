@@ -62,23 +62,35 @@ Detection mechanisms
 ## Protection
 Protection mechanisms
 
-<!-- # Rules -->
-<!-- Rules description -->
+## Rules
+Rules description
 
 # Getting Started
 
 # Modules
 This section outlines how the plugin is organised into modules, each representing different protection mechanism.
 
-## Core
-## Captcha
-## Pwned Check
-## Stigma
+* [Core]({{ site.baseurl }}/core) - core functionality of Nixer Spring Plugin.
 
-<!-- # Extending Nixer -->
+* [Captcha]({{ site.baseurl }}/captcha) - dynamic captcha challenge.
+
+* [Pwned Check]({{ site.baseurl }}/pwned-check) - suspicious credentials check.
+
+* [Stigma]({{ site.baseurl }}/stigma) - device stamping mechanism.
+
+# Extending Nixer
+How to create your own extensions to the plugin.
 
 # Examples
 
+For full usage examples please see the following:
+
+* [Internal example, most up-to-date, local dependency resolution](https://github.com/nixer-io/nixer-spring-plugin/tree/master/samples/example)
+
+* [External example, aligned to the latest release, real dependency resolution](https://github.com/nixer-io/nixer-spring-plugin-integrations/tree/master-with-nixer-plugin/nixer-spring-plugin-demo-app)
+
+
 # Additional Features
+Bloom filter
 
 # Other Resources

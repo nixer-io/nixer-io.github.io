@@ -30,14 +30,15 @@ caused e.g. by a credential stuffing attack, is going to result in sudden peak o
 
 The following table shows all cases in detail.
 
+{:.table}
 | Stigma token | Login result | Action    |
 |--------------|--------------|-----------|
-| Good         | Success      | None      |
-| Good         | Failed       | New token, revoke the current Stigma |
-| Bad          | Success      | New token |
-| Bad          | Failed       | New token |
+| `Good`       | `Success`    | None      |
+| `Good`       | `Failed`     | New token, revoke the current Stigma |
+| `Bad`        | `Success`    | New token |
+| `Bad`        | `Failed`     | New token |
 
-Stigma token is considered "Bad" when:
+Stigma token is considered `Bad` when:
 * is missing, that is the cookie is not present at all or has empty value,
 * it cannot be parsed, e.g. invalid format or decryption error (see further sections),
 * the carried Stigma is in invalid state, e.g. revoked or expired.
@@ -121,10 +122,3 @@ nixer.stigma.decryptionKeyFile=classpath:stigma-dec-jwk.json
 Data related to Stigmas is by default stored in the embedded H2 database shipped with Spring Boot,
 however it might be replaced with any other JDBC-compatible database. 
 Alternatively, by implementing `io.nixer.nixerplugin.stigma.storage.StigmaStorage`, different storage mechanisms can be used.
-
-# Examples
-
-For full usage examples please see the following:
-
-* [Internal example, most up-to-date, local dependency resolution](https://github.com/nixer-io/nixer-spring-plugin/tree/master/samples/example)
-* [External example, aligned to the latest release, real dependency resolution](https://github.com/nixer-io/nixer-spring-plugin-integrations/tree/master-with-nixer-plugin/nixer-spring-plugin-demo-app)
