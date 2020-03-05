@@ -2,7 +2,7 @@
 layout: page
 homepage: true
 short_title: Stigma
-order: 4
+order: 14
 permalink: /stigma/
 ---
 

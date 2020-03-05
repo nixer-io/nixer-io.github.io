@@ -2,7 +2,7 @@
 layout: page
 homepage: true
 short_title: Captcha
-order: 2
+order: 12
 permalink: /captcha/
 ---
 

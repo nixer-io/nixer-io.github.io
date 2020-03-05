@@ -41,7 +41,7 @@ closely related to brute force techniques, yet it is frighteningly effective.
 To learn more about credential stuffing take a look at [OWASP definition](https://www.owasp.org/index.php/Credential_stuffing) or our 
 [introductory article into the subject](https://medium.com/@jbron/credential-stuffing-how-its-done-and-what-to-do-with-it-57ad66302ce2).
 
-## Why Spring plugin?
+## Why Spring Plugin?
 
 The motivation for releasing this open source plugin is to give more insight and control to the developers of web applications. 
 Majority of available protection software runs as an external piece complicating the architecture and introducing yet another point 
@@ -68,11 +68,12 @@ Protection mechanisms
 Rules description
 
 # Getting Started
+Guides and tutorials.
 
 # Modules
 This section outlines how the plugin is organised into modules, each representing different protection mechanism.
 
-* [Core]({{ site.baseurl }}/core) - core functionality of Nixer Spring Plugin.
+* [Core]({{ site.baseurl }}/core) - base functionality of Nixer Spring Plugin.
 
 * [Captcha]({{ site.baseurl }}/captcha) - dynamic captcha challenge.
 
