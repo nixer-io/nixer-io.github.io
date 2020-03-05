@@ -2,6 +2,7 @@
 layout: page
 homepage: true
 short_title: Docs Home
+order: 0
 ---
 
 # Docs Home

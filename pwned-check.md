@@ -2,6 +2,7 @@
 layout: page
 homepage: true
 short_title: Pwned Check
+order: 3
 permalink: /pwned-check/
 ---
 
