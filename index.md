@@ -1,6 +1,7 @@
 ---
 layout: page
 homepage: true
+short_title: Docs Home
 ---
 
 # Docs Home
