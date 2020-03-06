@@ -15,9 +15,9 @@ The credentials typed by the user are transformed into hashes and checked agains
 credentials that have been leaked in a known data breach. 
 
 ---
-**The check is done completely locally, no data is sent outside your application.**
-
-**Since it is performed on hashes of credentials, not original values, the risk of a password leak is not increased by using this feature.**
+> **The check is done completely locally, no data is sent outside your application.**
+>
+> **Since it is performed on hashes of credentials, not original values, the risk of a password leak is not increased by using this feature.**
 
 ---
 
