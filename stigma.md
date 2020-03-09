@@ -81,6 +81,7 @@ that have been encrypted with any previous keys, so the "old" keys need to be ke
 ## Installation
 
 Stigma Nixer plugin is distributed through [Maven Central](https://search.maven.org/search?q=io.nixer).
+
 It requires dependency to Core Nixer plugin as well.
 
 ```kotlin
@@ -90,7 +91,8 @@ dependencies {
 }
 ```
 
-After the dependencies are added all beans are created automatically with Spring's autoconfiguration mechanism.
+After the dependencies are added all beans are created automatically with Spring's 
+[autoconfiguration mechanism](https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-auto-configuration).
 
 ## Configuration
 
