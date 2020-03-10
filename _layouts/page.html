@@ -9,7 +9,7 @@ layout: default
                 {% assign sorted_pages = site.html_pages | sort: "order" %}
                 {% for p in sorted_pages %}
                     {% if p.side_menu == true %}
-                        <li {% if p.title == page.title %}class="active"{% endif %}>
+                        <li {% if p.title == page.title %}class="active expand-submenu"{% endif %}>
                             <a href="{{ p.url }}">{{ p.short_title }}</a>
                         </li>
                     {% endif %}
@@ -18,13 +18,8 @@ layout: default
 
         </div>
 
-        <div class="col-md-6" role="main">
+        <div class="col-md-10" role="main">
             <div class="bs-docs-section">{{ content }}</div>
-        </div>
-
-        <div class="col-md-3 bs-docs-sidebar hidden-print sidebar-current-toc" role="complementary">
-            <ul class="nav bs-docs-sidenav sidenav-current-toc"></ul>
-
         </div>
     </div>
 
