@@ -2,6 +2,7 @@
 layout: page
 homepage: true
 short_title: Docs Home
+side_menu: true
 order: 0
 ---
 
@@ -9,110 +10,21 @@ order: 0
 
 This is home of the documentation for [Nixer Spring Plugin](https://github.com/nixer-io/nixer-spring-plugin). 
 
-The documentation is organised into following sections:
+The documentation is organised as following:
 
-* [Overview]({{ site.baseurl }}#overview) describes at high level the idea of the plugin, the problem it attempts to solve
+* [Overview]({{ site.baseurl }}/overview) section describes at high level the idea of the plugin, the problem it attempts to solve
 and motivation behind the chosen solution.
 
-* [How?]({{ site.baseurl }}#how) explains in what way the plugin is meant to solve the problem.
+* [Concepts]({{ site.baseurl }}/concepts) explains in what way the plugin is meant to solve the problem.
 
-* [Getting Started]({{ site.baseurl }}#getting-started) guides you through the steps involved in applying Nixer Spring Plugin 
+* [Getting Started]({{ site.baseurl }}/getting-started) guides you through the steps involved in applying Nixer Spring Plugin 
 to your application. 
 
-* [Modules]({{ site.baseurl }}#modules) outlines how the plugin is organised into libraries, 
+* [Modules]({{ site.baseurl }}/modules) outlines how the plugin is organised into libraries, 
 each representing different protection mechanism.
 
-* [Examples]({{ site.baseurl }}#examples) of complete applications using the plugin.
+* [Examples]({{ site.baseurl }}/examples) of complete applications using the plugin.
 
-* [Additional Features]({{ site.baseurl }}#additional-features) offered by Nixer open source software, apart of the plugin.
+* [Additional Features]({{ site.baseurl }}/additional-features) offered by Nixer open source software, apart of the plugin.
 
-<!--* [Other Resources]({{ site.baseurl }}#other-resources) like articles, videos, etc.--> 
-
-# Overview
-
-The plugin for [Spring framework](https://github.com/spring-projects/spring-framework) 
-provides protection against credential stuffing attacks to your Spring-based web application.
-
-### Credential Stuffing
-
-Credential Stuffing is a peculiar attack on web applications. Technically it is a very basic and easy to understand attack 
-closely related to brute force techniques, yet it is frighteningly effective. 
- 
-To learn more about credential stuffing take a look at [OWASP definition](https://www.owasp.org/index.php/Credential_stuffing) or our 
-[introductory article into the subject](https://medium.com/@jbron/credential-stuffing-how-its-done-and-what-to-do-with-it-57ad66302ce2).
-
-### Why Spring Plugin?
-
-The motivation for releasing this open source plugin is to give more insight and control to the developers of web applications. 
-Majority of available protection software runs as an external piece complicating the architecture and introducing yet another point 
-of failure into the system. In addition, the task of detecting credential stuffing often requires statistical learning or machine learning 
-which results in a black-box software that can't explain its decisions. Also such third-party servers require access 
-to the HTTP traffic, which creates data privacy and security concerns. Administrators are usually reluctant to adopt that kind of black-box 
-protections. It is not easy to enforce adoption of such solutions within the organization. 
-   
-Apart from privacy and infrastructure considerations, there are also data science related advantages of such approach. 
-External software needs to read a lot of things directly from HTTP traffic. The process of feature engineering and data augmentation 
-is harder and usually results in complicated algorithms. By moving heuristics directly into the application, we are no longer forced to 
-decode HTTP traffic and we have access to much broader application context. This is especially powerful in Spring, where a lot of 
-configuration parameters about the application are available internally. By leveraging Spring's well-thought architecture it is possible to 
-create a library that provides control and ease of integration.
-
-# How?
-### Detection
-Detection mechanisms
-
-### Protection
-Protection mechanisms
-
-### Rules
-Rules description
-
-# Getting Started
-Guides and tutorials.
-
-# Modules
-This section outlines how the plugin is organised into modules, each representing different protection mechanism.
-
-### Core
-Provides base functionality of Nixer Spring Plugin. Detailed documentation is available [here]({{ site.baseurl }}/core).
-
-### Captcha 
-Dynamic captcha challenge. [See the docs]({{ site.baseurl }}/captcha).
-
-### Pwned Check 
-Real-time suspicious credentials check. [See the docs]({{ site.baseurl }}/pwned-check).
-
-### Stigma
-Simple yet powerful device stamping mechanism. [See the docs]({{ site.baseurl }}/stigma).
-
-# Extending Nixer
-How to create your own extensions to the plugin.
-
-# Examples
-
-For full usage examples please see the following:
-
-* [Internal example, most up-to-date, local dependency resolution](https://github.com/nixer-io/nixer-spring-plugin/tree/master/samples/example)
-
-* [External example, aligned to the latest release, real dependency resolution](https://github.com/nixer-io/nixer-spring-plugin-integrations/tree/master-with-nixer-plugin/nixer-spring-plugin-demo-app)
-
-# Additional Features
-
-Features internally utilized by Nixer Spring Plugin which also can be used individually.
-
-### File-based Bloom Filter
-
-We provide file-based Bloom filter implementation which can efficiently handle large, i.e. multi-GB, data sets.
-The implementation is available as a Java library, additionally we prepared a command-line tool for manipulating the filters.
-
-For more information see the [detailed Bloom filter documentation]({{ site.baseurl }}/bloom-filter).
-
-### Cloud IP Ranges Supplier
-
-Most big cloud providers publish their IP addresses ranges. Information whether an IP address belongs to a particular cloud provider
-might be valuable for various reasons, e.g. as a hint for a suspicious request in our context.  
-
-We provide a simple script extracting the current IP addresses lists from various cloud providers. 
-You can find more information [here]({{ site.baseurl }}/cloud-ip-ranges).
-
-<!--# Other Resources-->
+* [Resources]({{ site.baseurl }}/resources) like articles, videos, etc. 
