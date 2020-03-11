@@ -10,6 +10,4 @@ items:
   - examples.md
   - extending-nixer.md
   - additional-features.md
-  - bloom-filter.md
-  - cloud-ip-ranges.md
   - resources.md

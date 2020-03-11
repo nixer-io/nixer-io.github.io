@@ -1,11 +1,7 @@
----
-layout: page
-homepage: true
-short_title: Cloud IP Ranges
-permalink: /cloud-ip-ranges/
----
+## Cloud IP Ranges
 
-# Cloud IP Ranges
+Most big cloud providers publish their IP addresses ranges. Information whether an IP address belongs to a particular cloud provider
+might be valuable for various reasons, e.g. as a hint for a suspicious request in our context.  
 
 We provide a simple Python script which purpose is to gather the actual IP ranges for various cloud providers.
 

@@ -1,17 +1,8 @@
----
-layout: page
-homepage: true
-short_title: Bloom Filter
-permalink: /bloom-filter/
----
-
-# Bloom Filter
+## File-based Bloom Filter
 
 A [Bloom filter](https://en.wikipedia.org/wiki/Bloom_filter) is a probabilistic data structure designed to tell, rapidly and efficiently, 
 whether an element is a member of a set. False positives are possible, but false negatives are not, which means query returns either 
 _"possibly in set"_ or _"definitely not in set"_.
-
-# File-based Bloom Filter
 
 Most Bloom filter implementations for Java are based on data sets kept in memory which is a huge limitation 
 when it comes to handle large data sets, in terms of performance and system stability. 
@@ -19,7 +10,7 @@ when it comes to handle large data sets, in terms of performance and system stab
 Our goal was to be able to efficiently handle Bloom filters with massive data sets, 
 counted in billions of entries or multiple GBs of storage.
 
-# File-based Bloom Filter for Java
+## File-based Bloom Filter for Java
 
 We tackled the problem of large data sets by creating a Bloom filter implementation that keeps the data in a file rather than in memory.
 
@@ -38,7 +29,7 @@ You can see concrete numbers in [the benchmark section](#performance-benchmark).
 
 The implementation is wrapped with a reusable Java library called simply `bloom-filter`.
 
-## Installation and usage
+### Installation and usage
 
 The `bloom-filter` library is distributed through [Maven Central](https://search.maven.org/search?q=io.nixer).
 
@@ -61,7 +52,7 @@ For most cases you are probably going to go with the second option and open alre
 However the filter has to be created somehow anyway. 
 In order to make this process more convenient we prepared [a handy CLI tool](#bloom-cli-tool).  
 
-# Bloom CLI Tool
+## Bloom CLI Tool
 
 In addition to the Bloom filter library we provide a simple command line utility to manipulate the Bloom filter backing files, 
 called `bloom-tool`.
@@ -145,14 +136,14 @@ Insert hexadecimal from `hashes.txt` to `my.bloom`. Useful if the filter is inte
 bloom-tool insert --hex --name=my.bloom --input-file=hashes.txt
 ```
 
-### Check an element is present in a filter's dataset
+#### Check an element is present in a filter's dataset
 
 Check if string `example` might be inserted in `my.bloom` filter, printing it to standard output if it might be true or skipping otherwise.
 ```
 echo example | bloom-tool check --name=my.bloom --stdin
 ```
 
-### Performance benchmark
+#### Performance benchmark
 
 Execute performance benchmark and correctness verification of the Bloom filter implementation.
 This might take a minute, or more for greater sizes.
