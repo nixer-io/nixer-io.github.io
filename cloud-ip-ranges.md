@@ -7,7 +7,7 @@ We provide a simple Python script which purpose is to gather the actual IP range
 
 The script is available [here](https://github.com/nixer-io/nixer-spring-plugin/tree/master/scripts/ip_cloud_ranges).
  
-### Supported cloud providers
+#### Supported cloud providers
 
 - AWS
 - Azure
@@ -16,7 +16,7 @@ The script is available [here](https://github.com/nixer-io/nixer-spring-plugin/t
 - Cloudflare
 - Oracle cloud
   
-### Usage
+#### Usage
 
 1. Make sure you have `pipenv` installed. In case you were not familiar with this tool go [here](https://github.com/pypa/pipenv).
 

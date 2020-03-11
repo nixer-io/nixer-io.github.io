@@ -1,4 +1,4 @@
-## File-based Bloom Filter
+## File-based Bloom Filter for Java
 
 A [Bloom filter](https://en.wikipedia.org/wiki/Bloom_filter) is a probabilistic data structure designed to tell, rapidly and efficiently, 
 whether an element is a member of a set. False positives are possible, but false negatives are not, which means query returns either 
@@ -9,8 +9,6 @@ when it comes to handle large data sets, in terms of performance and system stab
 
 Our goal was to be able to efficiently handle Bloom filters with massive data sets, 
 counted in billions of entries or multiple GBs of storage.
-
-## File-based Bloom Filter for Java
 
 We tackled the problem of large data sets by creating a Bloom filter implementation that keeps the data in a file rather than in memory.
 
@@ -29,7 +27,7 @@ You can see concrete numbers in [the benchmark section](#performance-benchmark).
 
 The implementation is wrapped with a reusable Java library called simply `bloom-filter`.
 
-### Installation and usage
+#### Installation and usage
 
 The `bloom-filter` library is distributed through [Maven Central](https://search.maven.org/search?q=io.nixer).
 
@@ -57,17 +55,17 @@ In order to make this process more convenient we prepared [a handy CLI tool](#bl
 In addition to the Bloom filter library we provide a simple command line utility to manipulate the Bloom filter backing files, 
 called `bloom-tool`.
 
-## Installation
+#### Installation
 
 `bloom-tool` is built using Gradle [application plugin](https://docs.gradle.org/current/userguide/application_plugin.html) 
 so the package includes start scripts specific to various operating systems.
 
-### Download package from GitHub
+#### Download package from GitHub
 
 The tool package is available on GitHub as an addition to 
 [each release of Nixer Spring Plugin](https://github.com/nixer-io/nixer-spring-plugin/releases/latest).
 
-### Build from sources
+#### Build from sources
 
 Alternatively, it can be build from sources - to do so clone or download 
 [Nixer Spring Plugin](https://github.com/nixer-io/nixer-spring-plugin) and build the project using Gradle:
@@ -78,7 +76,7 @@ Alternatively, it can be build from sources - to do so clone or download
 
 The tool's package is going to appear under `bloom-tool/build/distributions` directory.
 
-## Usage
+#### Usage
 
 Unzip the `bloom-tool` package and invoke the following in order to see all commands and options:
 
@@ -86,7 +84,7 @@ Unzip the `bloom-tool` package and invoke the following in order to see all comm
 bin/bloom-tool --help
 ```
 
-### Basic use case
+#### Basic use case
 
 Suppose we have a text file containing list of leaked credentials (e.g. one from [here](https://haveibeenpwned.com))
 which we want to put into a Bloom filter. Each line in the file consist of a password hash (as hex strings) and additional info,
@@ -108,7 +106,7 @@ Remember fields are counted starting from `0`.
 
 Note execution for this amount of data might take a while. For MacBook Pro Core i7 with 16GB RAM it was around 24 minutes.
 
-### Create a Bloom filter
+#### Create a Bloom filter
 
 Create a new filter `my.bloom` for 1M insertions and 1 to 1M false positive rate.
 ```
@@ -116,7 +114,7 @@ bloom-tool create --size=1000000 --fpp=1e-6 --name=my.bloom
 ```
 Results in creating `my.bloom` metadata file and empty `my.bloom-data` data file.
 
-### Insert values into a Bloom filter
+#### Insert values into a Bloom filter
 
 Insert lines from `entries.txt` into `my.bloom` filter, populating `my.bloom-data` file.
 ```
