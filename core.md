@@ -1,14 +1,17 @@
 ---
 layout: page
 homepage: true
-short_title: Core
+short_title: "Module: Core"
+order: 11
+side_menu: true
 permalink: /core/
 ---
 
 # Core
 
-# Usage
-## Installation
+Provides base functionality of Nixer Spring Plugin.
+
+### Installation
 
 Core Nixer plugin is distributed through [Maven Central](https://search.maven.org/search?q=io.nixer).
 

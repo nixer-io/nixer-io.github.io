@@ -1,12 +1,13 @@
 ---
 layout: page
 homepage: true
-short_title: Pwned Check
+short_title: "Module: Pwned Check"
 order: 13
+side_menu: true
 permalink: /pwned-check/
 ---
 
-# Suspicious credentials check
+# Suspicious Credentials Check
 
 This module provides functionality of checking if the credentials being used for login attempt have been compromised in a data breach, 
 in other words '_pwned_', hence the module's name.
@@ -21,15 +22,15 @@ credentials that have been leaked in a known data breach.
 
 ---
 
-# How does it work
+## How Does It Work
 
 The functionality operates on hashes of credentials and uses [Bloom filter](https://en.wikipedia.org/wiki/Bloom_filter) for doing the check. 
 
 The Bloom filter implementation being used offers great performance and can be applied on hot paths, 
 [read more here](https://github.com/nixer-io/nixer-spring-plugin/tree/master/bloom-filter).
 
-# Usage
-## Data source
+## Usage
+### Data Source
 
 Before using the filter it must be populated with leaked credentials data to be checked against. 
 For this purpose we provide convenient command line utility, 
@@ -46,7 +47,7 @@ Bloom filter is represented by two files:
 - `filter_name.bloom` - metadata file containing filter parameters, 
 - `filter_name.bloom-data` - data set file.
 
-## Installation
+### Installation
 
 Pwned Check Nixer plugin is distributed through [Maven Central](https://search.maven.org/search?q=io.nixer).
 It requires dependency to Core Nixer plugin as well.
@@ -60,7 +61,7 @@ dependencies {
 
 After the dependencies are added all beans are created automatically with Spring's autoconfiguration mechanism.
 
-## Configuration
+### Configuration
 
 In order to enable the functionality the following properties are to be set:
 
@@ -71,7 +72,7 @@ nixer.pwned.check.pwnedFilePath=classpath:PWNED_DATABASE_DIRECTORY/filter_name.b
 
 where `PWNED_DATABASE_DIRECTORY` is expected to contain both Bloom filter files, `filter_name.bloom` and `filter_name.bloom-data`.
 
-## Results
+### Results
 
 Pwned check results are written into 
 [Spring Boot application metrics](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-metrics), 

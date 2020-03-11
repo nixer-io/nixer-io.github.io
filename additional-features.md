@@ -3,7 +3,7 @@ layout: page
 homepage: true
 short_title: Additional Features
 side_menu: true
-order: 7
+order: 23
 permalink: /additional-features/
 ---
 

@@ -1,8 +1,9 @@
 ---
 layout: page
 homepage: true
-short_title: Stigma
+short_title: "Module: Stigma"
 order: 14
+side_menu: true
 permalink: /stigma/
 ---
 
@@ -14,7 +15,7 @@ making it useful for detecting suspicious behaviors over time.
 Due to the way of identifying devices the mechanism is completely immune to attacker's bypass techniques 
 like manipulations with IP addresses, User-Agents, usage of bots etc.
 
-# Idea
+## Idea
 
 The mechanism is based on marking each device attempting to login with a so-called Stigma which is a randomly generated unique identifier.
 Stigma in turn is wrapped with a simple data structure, assuring security and integrity, called Stigma token.
@@ -28,7 +29,7 @@ and assigned as cookie via the response.
 The core measurement is the number of new Stigmas being generated over time. Large number of consecutive failed login attempts, 
 caused e.g. by a credential stuffing attack, is going to result in sudden peak on the distribution.
 
-## Stigma token evaluation
+### Stigma Token Evaluation
 
 The following table shows all cases in detail.
 
@@ -47,7 +48,7 @@ Stigma token is considered `Bad` when:
 
 Creating a new token means generating new unique Stigma and wrapping it with Stigma token. 
 
-## How is it better?
+### How Is It Better?
 
 One could ask in which way this is better than just analyzing a number of failed login attempts, 
 simple fingerprinting or a regular session?
@@ -62,7 +63,7 @@ as each failed attempt is going to cause a new Stigma generation - strong new St
 * attacks based on username enumeration are going to generate a strong signal in similar manner
 * Stigmas cannot be reused between failed attempts, due to revoking a valid Stigmas in such cases.
 
-## Implementation
+### Implementation
 
 Stigma token is implemented as encrypted [JWT](https://en.wikipedia.org/wiki/JSON_Web_Token), 
 that is [JWE](https://en.wikipedia.org/wiki/JSON_Web_Encryption), where the value of Stigma is carried as one of claims.
@@ -77,8 +78,8 @@ At a time the system maintains a single encryption key and multiple decryption k
 The reason is that after changing the key it is still necessary to be able to decrypt incoming Stigma tokens 
 that have been encrypted with any previous keys, so the "old" keys need to be kept for decryption.
 
-# Usage
-## Installation
+## Usage
+### Installation
 
 Stigma Nixer plugin is distributed through [Maven Central](https://search.maven.org/search?q=io.nixer).
 
@@ -94,12 +95,12 @@ dependencies {
 After the dependencies are added all beans are created automatically with Spring's 
 [autoconfiguration mechanism](https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-auto-configuration).
 
-## Configuration
+### Configuration
 
 In order to start using the Stigma mechanism you need to provide a JWK key to be used for encryption and decryption of Stigma tokens. 
 This key is passed in two files, one for encryption and the other for decryption.
  
-## Key files requirements
+### Key Files Requirements
 
 * the encryption key file must contain a single key,
 * the decryption keys file must contain the key from the encryption file and may contain the old keys,
@@ -113,7 +114,7 @@ nixer.stigma.encryptionKeyFile=classpath:stigma-enc-jwk.json
 nixer.stigma.decryptionKeyFile=classpath:stigma-dec-jwk.json
 ```
 
-## Keys requirements
+### Keys Requirements
 
 * must be in [JWK](https://tools.ietf.org/html/rfc7517) format,
 * algorithm: direct, i.e. `alg` parameter must be set to `dir`,
@@ -121,7 +122,7 @@ nixer.stigma.decryptionKeyFile=classpath:stigma-dec-jwk.json
 * key id (`kid`) is mandatory and must be unique among all decryption keys,
 * the encryption key must be included in the decryption key set with the same key id.
 
-## Storage
+### Storage
 
 Data related to Stigmas is by default stored in the embedded H2 database shipped with Spring Boot,
 however it might be replaced with any other JDBC-compatible database. 

@@ -3,7 +3,7 @@ layout: page
 homepage: true
 short_title: Resources
 side_menu: true
-order: 8
+order: 24
 permalink: /resources/
 ---
 
