@@ -2,7 +2,6 @@
 layout: page
 homepage: true
 short_title: "Module: Pwned Check"
-order: 13
 side_menu: true
 permalink: /pwned-check/
 ---

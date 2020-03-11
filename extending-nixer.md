@@ -3,7 +3,6 @@ layout: page
 homepage: true
 short_title: Extending Nixer
 side_menu: true
-order: 22
 permalink: /extending-nixer/
 ---
 

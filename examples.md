@@ -3,7 +3,6 @@ layout: page
 homepage: true
 short_title: Examples
 side_menu: true
-order: 21
 permalink: /examples/
 ---
 

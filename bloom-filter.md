@@ -2,7 +2,6 @@
 layout: page
 homepage: true
 short_title: Bloom Filter
-order: 21
 permalink: /bloom-filter/
 ---
 

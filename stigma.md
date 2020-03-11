@@ -2,7 +2,6 @@
 layout: page
 homepage: true
 short_title: "Module: Stigma"
-order: 14
 side_menu: true
 permalink: /stigma/
 ---

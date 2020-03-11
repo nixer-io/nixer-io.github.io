@@ -2,7 +2,6 @@
 layout: page
 homepage: true
 short_title: "Module: Core"
-order: 11
 side_menu: true
 permalink: /core/
 ---

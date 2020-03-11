@@ -2,7 +2,6 @@
 layout: page
 homepage: true
 short_title: Cloud IP Ranges
-order: 21
 permalink: /cloud-ip-ranges/
 ---
 

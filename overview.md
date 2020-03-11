@@ -3,7 +3,6 @@ layout: page
 homepage: true
 short_title: Overview
 side_menu: true
-order: 1
 permalink: /overview/
 ---
 

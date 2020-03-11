@@ -3,7 +3,6 @@ layout: page
 homepage: true
 short_title: Docs Home
 side_menu: true
-order: 0
 ---
 
 # Docs Home

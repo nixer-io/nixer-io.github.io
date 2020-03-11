@@ -2,7 +2,6 @@
 layout: page
 homepage: true
 short_title: "Module: Captcha"
-order: 12
 side_menu: true
 permalink: /captcha/
 ---
