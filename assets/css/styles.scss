@@ -1,0 +1,71 @@
+---
+---
+
+div[role="main"] p {
+  font-size: 17px;
+  line-height: 1.6;
+  font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+p.lead img {
+  max-width: 120px;
+}
+
+a.navbar-brand {
+  padding-top: 5px;
+}
+
+a.navbar-brand > img {
+  max-height: 40px;
+}
+
+.bs-docs-masthead {
+  padding-top: 30px;
+  padding-bottom: 50px;
+  margin-bottom: 20px;
+}
+
+.bs-docs-header h1, .bs-docs-header p {
+  margin-right: 0;
+}
+
+.bs-docs-sidebar {
+    display: none;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 20px;
+}
+
+.bs-docs-sidebar .nav > li > a {
+  font-size: 18px;
+}
+
+.bs-docs-sidebar .nav .nav > li > a {
+  font-size: 14px;
+}
+
+.back-top-top {
+  font-size: 13px;
+}
+
+.bs-docs-container {
+    position: relative;
+}
+
+#jumbotron-header {
+    position:relative;
+
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 50px;
+        width: 75%;
+        background: linear-gradient(135deg, transparent 50px, white 50px );
+    }
+}

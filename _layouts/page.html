@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<div class="container">
+    <div class="bs-docs-container row">
+        <div class="col-md-3 bs-docs-sidebar hidden-print" role="complementary">
+            <ul class="nav bs-docs-sidenav">
+                {% for item in site.data.menu.items %}
+                    {% assign pages_singleton_list = site.pages | where: "name" , item %}
+                    {% for p in pages_singleton_list %}
+                        {% if p.side_menu == true %}
+                            <li {% if p.title == page.title %}class="active expand-submenu"{% endif %}>
+                                <a href="{{ p.url }}">{{ p.short_title }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+
+        </div>
+
+        <div class="col-md-10" role="main">
+            <div class="bs-docs-section">{{ content }}</div>
+        </div>
+    </div>
+
+    {% include disqus.html %}
+</div>
