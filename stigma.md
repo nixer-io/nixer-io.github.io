@@ -86,8 +86,8 @@ It requires dependency to Core Nixer plugin as well.
 
 ```kotlin
 dependencies {
-    implementation("io.nixer:nixer-plugin-core:0.1.0.0")
-    implementation("io.nixer:nixer-plugin-stigma:0.1.0.0")
+    implementation("io.nixer:nixer-plugin-core:0.1.1.0")
+    implementation("io.nixer:nixer-plugin-stigma:0.1.1.0")
 }
 ```
 

@@ -3,6 +3,7 @@ items:
   - overview.md
   - concepts.md
   - getting-started.md
+  - modules.md
   - core.md
   - captcha.md
   - pwned-check.md

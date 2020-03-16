@@ -69,3 +69,9 @@ a.navbar-brand > img {
         background: linear-gradient(135deg, transparent 50px, white 50px );
     }
 }
+
+p > code.highlighter-rouge {
+  color: #1b71bb;
+  font-size: 90%;
+  font-family: monospace;
+}
