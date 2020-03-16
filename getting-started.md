@@ -10,21 +10,17 @@ permalink: /getting-started/
 
 ### Plugin in Spring Boot MVC application
 
-In this getting started tutorial we will go though the process of integrating Nixer plugin into the simple Spring MVC application. If however you want to see necessary changes right away look at the diff in examples repository. Branch master contains application only and branch todo contains all the necessary modification to the codebase to have the plugin working.
+In this getting started tutorial we will go though the process of integrating Nixer plugin into the simple Spring MVC application. If however you want to see necessary changes right away look at [the diff in examples repository](https://github.com/nixer-io/nixer-spring-plugin-integrations/compare/with%2Fnixer-plugin-getting-started?diff=split). Branch _master_ contains application only and branch _with/nixer-plugin-getting-started_ contains all the necessary modification to the codebase to have the plugin working.
 
 ### Spring application
-First, let’s check out the default application we will use in this tutorial. Let’s checkout the GitHub repository, build the application and run it locally.
+First, let’s check out the default application we will use in this tutorial. Let’s clone the GitHub repository, build the application and run it locally.
 ```
 $ git clone https://github.com/nixer-io/nixer-spring-plugin-integrations.git
 $ cd nixer-spring-plugin-integrations/nixer-spring-plugin-demo-app
 $ ./gradlew bootRun 
 ```
 
-By default, the application will start on port 8080 and this is the port I will use in this demo. You can change it with: 
-```
-$ SERVER_PORT=8080 ./gradlew bootRun
-```
-or you can change gradle scripts directly.
+By default, the application will start on port 8080 and this is the port I will use in this demo.
 
 After application startup, go to: [http://localhost:8080](http://localhost:8080) and login with credentials:
 ```
@@ -35,7 +31,10 @@ As you can see, this is a very simple _Todo app_. The application uses the most 
 
 ### Credential stuffing attack
 For this example, we will only consider the simplest credential stuffing attack. The attack will consist of consecutive login attempts executed one after another. For simulating this scenario, we will use Postman or rather its headless version Newman.
-Go to test scenarios directory:
+
+More specifically, we will use a Nixer fork of Newman with custom modification that provides programmatic access to Cookies - we needed it to automate the test scenarios. You can review our modifications [here on branch feature/cookies-domain-whitelist](https://github.com/nixer-io/newman.git#feature/cookies-domain-whitelist). 
+
+In order to test the application, go to test scenarios directory:
 ```
 $ cd nixer-spring-plugin-integrations/nixer-spring-plugin-demo-app/e2e-tests
 ```
@@ -52,9 +51,8 @@ and POST that sends the credentials. In order to execute the scenario run the fo
 $ node test-cs.js
 ```
 
-Executed requests and summary of the responses will be printed to the output. In the summary you can see, that all the login attempts 
-(`iterations` in the table) were processed and expected responses from the server were returned.
-It indicates, that the server processed all login attempts and therefore performing a credential stuffing attack is possible.
+Executed requests and summary of the responses will be printed to the output in a form of a table. 
+It is not intuitive to read, but by looking at `iterations` row you can see that all login attempts were executed. By looking at the `assertions` row you can see that all requests were executed and expected responses from the server were returned.
 
 {:.table}
 |                      | executed  | failed |
@@ -68,8 +66,7 @@ It indicates, that the server processed all login attempts and therefore perform
 
 
 Summary table shows that all login requests were executed without issues. You can look in the `test-cs.data.csv` file for credentials 
-that were used for login attempts. It means that credentials attacks are possible, it took 16 seconds 
-(in real-world case network delays would make it longer) to enumerate 100 credentials. 
+that were used for login attempts. It means that credentials attacks are possible, it took 16 seconds for the test to to enumerate 100 credentials and perform necessary checks. Of course, we're doing the test locally so in real-world scenarios we would have network delays as well.
 
 Now that we established that default Spring Boot web application is prone to credential attacks, let’s explore how applying Nixer plugin can change it. 
 
@@ -87,9 +84,11 @@ implementation "io.nixer:nixer-plugin-core:0.1.1.0"
 implementation "io.nixer:nixer-plugin-captcha:0.1.1.0"
 ```
 
-Now, we can start adding features to the application. At the beginning let’s add Google Captcha v2 mechanism to our login page. 
+Now, we can start adding features to the application. The plugin leverages Spring Boot's [auto configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-auto-configuration) mechanism, so needed beans will be created automatically.
+
+At the beginning let’s add Google Captcha v2 mechanism to our login page. 
 If you plan to add this to your own application register captcha for your application [at Google](https://www.google.com/recaptcha/admin/create). 
-However for the sake of this tutorial you can use our example captcha configuration.
+However, for the sake of this tutorial, you can use our example captcha configuration.
 
 For captcha to work, we need 3 configuration strings: 
 * site key - used to invoke reCAPTCHA on our site,
@@ -119,7 +118,7 @@ We also need to modify the login form by adding:
 <div class="g-recaptcha" th:attr="data-sitekey=${@captchaKeyProvider.getSiteKey()}"></div>
 ```
 
-inside the `<form>` component, **after the password input**. As you can see, we’re injecting site key from `CaptchaKeyProvider` bean.
+inside the `<form>` component, **after the password input**. As you can see, we’re injecting site key from `io.nixer.nixerplugin.captcha.recaptcha.CaptchaKeyProvider` bean.
 
 Now if you start the application, for example with:
 ```
@@ -129,18 +128,19 @@ $ ./gradlew bootRun
 a reCAPTCHA box is going to appear on the login page. 
 However, the result of the captcha is not yet validated, so you can login correctly without clicking on the captcha.
 
-In order to enable captcha verification, we have to enhance Spring Security authentication mechanism. Common method for defining authentication and authorization strategies is through WebSecurityConfigurerAdapter class. In WebSecurityConfig class, we configure simple HttpSecurity object and we provide in-memory authentication for the sake of this demo. Let’s inject CaptchaChecker bean into the class:
+In order to enable captcha verification, we have to enhance Spring Security authentication mechanism. Common method for defining authentication and authorization strategies is through `org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter` class. In `io.nixer.springplugin.demo.WebSecurityConfig` class, we configure simple `org.springframework.security.config.annotation.web.builders.HttpSecurity` object and we provide in-memory authentication for the sake of this demo. Let’s inject `io.nixer.nixerplugin.captcha.security.CaptchaChecker` bean into the class:
 ```java
 @Autowired
 private CaptchaChecker captchaChecker;
 ```
 
-We also need to modify authentication manager by adding captcha post processor, using `configurer.withObjectPostProcessor` method:
+We also need to modify authentication manager in `io.nixer.springplugin.demo.WebSecurityConfig` class by adding captcha post processor, using `configurer.withObjectPostProcessor` method:
 ```java
 @Override
 protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
     PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-    var configurer = auth.inMemoryAuthentication().passwordEncoder(encoder);
+    final InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder> configurer = 
+                                               auth.inMemoryAuthentication().passwordEncoder(encoder);
 
     users().forEach((user, pass) -> configurer.withUser(user)
                                               .password(encoder.encode(pass))
@@ -159,7 +159,8 @@ Condition can be set to `NEVER`, `ALWAYS` and `SESSION_CONTROLLED`. We will retu
 
 Now, it’s time to run the application again (`$ ./gradlew bootRun`). This time, an attempt to login without passing captcha mechanism will fail with _“Invalid username and password.”_ (for the simplicity of this tutorial we don’t distinguish fail reasons here). 
 
-At this point we have a successfully integrated Google reCAPTCHA v2 within the Spring application with just 11 lines of code in three files. 
+At this point we have a successfully integrated Google reCAPTCHA v2 within the Spring application. Congrats!
+
 For now, captcha is displayed for each user and for each login attempt which would stop credential stuffing (under assumption that reCAPTCHA v2 can’t be bypassed by bots). 
 
 However, the current credential stuffing protection is very simple and it impacts negatively user experience. 
@@ -191,14 +192,14 @@ Let’s modify `login.html` by adding an if statement to the previously added ta
      th:attr="data-sitekey=${@captchaKeyProvider.getSiteKey()}"></div>
 ```
 
-Now it’s time to define a rule and behavior for it. In the application.properties file, we will provide configuration for a rule:
+Now it’s time to define a rule and behavior for it. In the `application.properties` file, we will provide configuration for a rule:
 ```properties
 nixer.rules.failed-login-threshold.username.enabled=true
 nixer.rules.failed-login-threshold.username.threshold=3
 nixer.rules.failed-login-threshold.username.window=5m
 ```
 
-Next, in the `WebSecurityConfig` class define a bean `BehaviorProviderConfigurer`:
+Next, in the `io.nixer.springplugin.demo.WebSecurityConfig` class define a bean `io.nixer.nixerplugin.core.detection.filter.BehaviorProviderConfigurer`:
 ```java
 @Bean
 public FilterConfiguration.BehaviorProviderConfigurer behaviorConfigurer() {
@@ -261,7 +262,7 @@ The reason for this property is that when there is a small number of login attem
 (assuming no successful ones) in an one hour time period. 
 
 Now, we need to define a Rule that would trigger a Behavior on _failed-login-ratio_ activation. 
-Let's again to `WebSecurityConfig` and add a new rule to the builder:
+Let's again to `io.nixer.springplugin.demo.WebSecurityConfig` and add a new rule to the builder:
 ```java
     @Bean
     public FilterConfiguration.BehaviorProviderConfigurer behaviorConfigurer() {
@@ -303,7 +304,7 @@ This time the results are following:
 | `assertions`         | 495       | 89     |
 | `total run duration: 16.2s`  
 
-This table is not intuitive to read, but we need to look at __failed__ column in __assertions__ row. We can see 89 login attempts failed because captcha was displayed. If we analyze logs of the application, we would see multiple repetitions of following:
+By looking at `assertions` row we can see 89 login attempts failed because captcha was displayed. If we analyze logs of the application, we would see multiple repetitions of following:
 ```
 FailedLoginRatioRegistry : FAILED_LOGIN_RATIO event was caught with ratio: 1.0
 .BehaviorExecutionFilter : Executing behavior: CAPTCHA
@@ -327,6 +328,8 @@ demo,demo,true
 nonExistingUser6,ZyS67ePRz0VdKhyd,false
 nonExistingUser7,lTqm4co9CdDsylja,false
 ```
+Third column with values _true_ or _false_ indicates whether the credentials are correct (will result in a successfull login), this information can be used by testing tool in some scenarios.
+
 I am leaving the rest of the file unchanged. Now, let's restart the application or wait `window` time period to clear cached data 
 (persistence between restarts requires a regular database) and run the test again:
 ```
@@ -383,10 +386,6 @@ Now, let's modify the `test-cs.data.csv` file again by adding 20 `demo:demo` att
 
 This time, 45 requests were blocked out of 128. As you can see, a lot depends on state of the system but once the ratio increases to the `activationLevel`, it executes Behavior and should not drop below `deactivationLevel` during traditional credential stuffing attack. 
 
-When tuning the parameters it is good to know about two fundamental things:
-* what is the _failed-login-ratio_ for genuine users 
-* and what is the rate of login attempts within the system. 
-
-Though our defaults are quite generic and can be used as a starting point.
+When tuning the parameters it is good to know about two fundamental things: what is the _failed-login-ratio_ for genuine users and what is the rate of login attempts within the system. Though our defaults are quite generic and can be used as a starting point.
 
 We will end further analysis here as this is a _getting started_ tutorial. Feel free to explore source code and other sections of the docs.

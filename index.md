@@ -24,6 +24,6 @@ The documentation is organised as following:
 
 * [Extending Nixer]({{ site.baseurl }}/extending-nixer) helps developers customize and extend the plugin.
 
-* [Additional Features]({{ site.baseurl }}/additional-features) describes security features that can be used without the plugin.
+* [Additional Features]({{ site.baseurl }}/additional-features) describes features that can be used without the plugin.
 
 * [Resources]({{ site.baseurl }}/resources) on the web related to credential stuffing.

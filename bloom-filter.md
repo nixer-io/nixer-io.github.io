@@ -33,7 +33,7 @@ The `bloom-filter` library is distributed through [Maven Central](https://search
 
 ```kotlin
 dependencies {
-    implementation("io.nixer:bloom-filter:0.1.0.0")
+    implementation("io.nixer:bloom-filter:0.1.1.0")
 }
 ```
 
