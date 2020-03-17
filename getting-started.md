@@ -32,7 +32,7 @@ As you can see, this is a very simple _Todo app_. The application uses the most 
 ### Credential stuffing attack
 For this example, we will only consider the simplest credential stuffing attack. The attack will consist of consecutive login attempts executed one after another. For simulating this scenario, we will use Postman or rather its headless version Newman.
 
-More specifically, we will use a Nixer fork of Newman with custom modification that provides programmatic access to Cookies - we needed it to automate the test scenarios. You can review our modifications [here on branch feature/cookies-domain-whitelist](https://github.com/nixer-io/newman.git#feature/cookies-domain-whitelist). 
+More specifically, we will use a Nixer fork of Newman with custom modification that provides programmatic access to Cookies - we needed it to automate the test scenarios. You can review our modifications [here on branch feature/cookies-domain-whitelist](https://github.com/nixer-io/newman/compare/develop...feature/cookies-domain-whitelist). 
 
 In order to test the application, go to test scenarios directory:
 ```
@@ -217,7 +217,7 @@ That’s it, lets run the application again.
 The application is running, let’s re-run credential stuffing test as before.
 
 ```
-$ node test-cs.js | results.txt
+$ node test-cs.js | tee results.txt
 ```
 
 __As you can see by inspecting the output or `results.txt` file, nothing changed. We are still vulnerable!__
