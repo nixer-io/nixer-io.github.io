@@ -71,7 +71,13 @@ a.navbar-brand > img {
 }
 
 p > code.highlighter-rouge {
-  color: #1b71bb;
+  color: #37474f;
   font-size: 90%;
   font-family: monospace;
+}
+
+li {
+  font-size: 17px;
+  line-height: 1.6;
+  font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
 }

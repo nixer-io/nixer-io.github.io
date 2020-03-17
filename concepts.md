@@ -14,8 +14,8 @@ To obtain high-configurability and control, we decided to introduce concept of r
 We use rules to determine what actions to perform based on the request and it's metadata. These rules can prioritize certain actions, combine them etc.
 
 We also use rules to for defining protection mechanisms. Various rules can be created, for example: 
-   *  If user failed to login for in last 5 tries, display a captcha
-   *  If login success to fail ratio is <60%, display captcha for all IPs that match that criteria
-   *  If user uses leaked password and his IP comes from suspicious provider, log an incident and redirect the request
+   *  If user failed to login in last 5 tries, display a captcha
+   *  if percentage of successful login attempts is lower than 60% display captcha for login attempts
+   *  If user uses leaked password and his IP comes from suspicious provider, log the incident
    *  If user-agent string has a login success rate <40%, display captcha to all requests with that user-agent string
 

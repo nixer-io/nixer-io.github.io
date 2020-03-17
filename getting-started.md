@@ -10,7 +10,7 @@ permalink: /getting-started/
 
 ### Plugin in Spring Boot MVC application
 
-In this getting started tutorial we will go though the process of integrating Nixer plugin into the simple Spring MVC application. If however you want to see necessary changes right away look at [the diff in examples repository](https://github.com/nixer-io/nixer-spring-plugin-integrations/compare/with%2Fnixer-plugin-getting-started?diff=split). Branch _master_ contains application only and branch _with/nixer-plugin-getting-started_ contains all the necessary modification to the codebase to have the plugin working.
+In this getting started tutorial we will go though the process of integrating Nixer plugin into the simple Spring MVC application. If however you want to see necessary changes right away look at [the diff in examples repository](https://github.com/nixer-io/nixer-spring-plugin-integrations/compare/with%2Fnixer-plugin-getting-started?diff=split). Branch `master` contains application only and branch `with/nixer-plugin-getting-started` contains all the necessary modification to the codebase to have the plugin working.
 
 ### Spring application
 First, let’s check out the default application we will use in this tutorial. Let’s clone the GitHub repository, build the application and run it locally.
@@ -46,9 +46,9 @@ $ npm install
 
 Now you we can run a test scenario. There are number of test scenarios, let’s try basic credential stuffing, 
 which repeats one hundred login attempts. Each attempt consists of two HTTP requests, GET for obtaining the login page 
-and POST that sends the credentials. In order to execute the scenario run the following command:
+and POST that sends the credentials. We will be executing a command that produces significant output size, so let's copy the output to a file _results.txt_ with `tee`. In order to execute the scenario run the following command:
 ```
-$ node test-cs.js
+$ node test-cs.js | tee results.txt
 ```
 
 Executed requests and summary of the responses will be printed to the output in a form of a table. 
@@ -217,10 +217,10 @@ That’s it, lets run the application again.
 The application is running, let’s re-run credential stuffing test as before.
 
 ```
-$ node test-cs.js
+$ node test-cs.js | results.txt
 ```
 
-__As you can see, nothing changed. We are still vulnerable!__
+__As you can see by inspecting the output or `results.txt` file, nothing changed. We are still vulnerable!__
 
 ---
 Why?
@@ -289,7 +289,7 @@ $ ./gradlew bootRun
 Navigate to test scenarios and run them:
 ```
 $ cd e2e-tests
-$ node test-cs.js
+$ node test-cs.js | tee results.txt
 ```
 
 This time the results are following:
@@ -333,7 +333,7 @@ Third column with values _true_ or _false_ indicates whether the credentials are
 I am leaving the rest of the file unchanged. Now, let's restart the application or wait `window` time period to clear cached data 
 (persistence between restarts requires a regular database) and run the test again:
 ```
-$ node test-cs.js
+$ node test-cs.js | tee results.txt
 ```
 
 This time the logs contain:
