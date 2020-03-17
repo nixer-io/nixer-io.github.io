@@ -14,8 +14,6 @@ The documentation is organised as following:
 
 * [Overview]({{ site.baseurl }}/overview) describes the idea for the plugin, motivation and problem it attempts to solve.
 
-* [Concepts]({{ site.baseurl }}/concepts) explains core ideas for solving credential stuffing.
-
 * [Getting Started]({{ site.baseurl }}/getting-started) guides you through the steps for applying the plugin to your application.
 
 * [Modules]({{ site.baseurl }}/modules) of the plugin, each containing a different protection mechanism.
