@@ -48,7 +48,7 @@ Bloom filter is represented by two files:
 
 ### Installation
 
-Pwned Check Nixer plugin is distributed through [Maven Central](https://search.maven.org/search?q=io.nixer).
+Pwned Check Nixer plugin is distributed through [Maven Central](https://mvnrepository.com/artifact/io.nixer).
 It requires dependency to Core Nixer plugin as well.
 
 ```kotlin
