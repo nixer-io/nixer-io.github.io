@@ -42,7 +42,7 @@ social:
         profileUrl:
 
 analytics:
-    google: UA-160815672-1
+    google: UA-160815672-2
 
 # Build settings
 markdown: kramdown
