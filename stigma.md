@@ -91,9 +91,6 @@ dependencies {
 }
 ```
 
-After the dependencies are added all beans are created automatically with Spring's 
-[autoconfiguration mechanism](https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-auto-configuration).
-
 ### Configuration
 
 In order to start using the Stigma mechanism you need to provide a JWK key to be used for encryption and decryption of Stigma tokens. 

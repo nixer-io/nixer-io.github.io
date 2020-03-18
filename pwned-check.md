@@ -59,8 +59,6 @@ dependencies {
 }
 ```
 
-After the dependencies are added all beans are created automatically with Spring's autoconfiguration mechanism.
-
 ### Configuration
 
 In order to enable the functionality the following properties are to be set:
