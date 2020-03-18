@@ -80,14 +80,14 @@ that have been encrypted with any previous keys, so the "old" keys need to be ke
 ## Usage
 ### Installation
 
-Stigma Nixer plugin is distributed through [Maven Central](https://mvnrepository.com/artifact/io.nixer).
+Stigma Nixer plugin is distributed through [Maven Central]({{ site.project.mvn_repo_url }}).
 
 It requires dependency to Core Nixer plugin as well.
 
 ```kotlin
 dependencies {
-    implementation("io.nixer:nixer-plugin-core:0.1.1.0")
-    implementation("io.nixer:nixer-plugin-stigma:0.1.1.0")
+    implementation("io.nixer:nixer-plugin-core:{{ site.project.version }}")
+    implementation("io.nixer:nixer-plugin-stigma:{{ site.project.version }}")
 }
 ```
 
