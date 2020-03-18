@@ -12,12 +12,12 @@ Provides base functionality of Nixer Spring Plugin.
 
 ### Installation
 
-Core Nixer plugin is distributed through [Maven Central](https://mvnrepository.com/artifact/io.nixer).
+Core Nixer plugin is distributed through [Maven Central]({{ site.project.mvn_repo_url }}).
 
 It requires dependency to Core Nixer plugin as well.
 
 ```kotlin
 dependencies {
-    implementation("io.nixer:nixer-plugin-core:0.1.1.0")
+    implementation("io.nixer:nixer-plugin-core:{{ site.project.version }}")
 }
 ```

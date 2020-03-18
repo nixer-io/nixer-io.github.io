@@ -48,13 +48,13 @@ Bloom filter is represented by two files:
 
 ### Installation
 
-Pwned Check Nixer plugin is distributed through [Maven Central](https://mvnrepository.com/artifact/io.nixer).
+Pwned Check Nixer plugin is distributed through [Maven Central]({{ site.project.mvn_repo_url }}).
 It requires dependency to Core Nixer plugin as well.
 
 ```kotlin
 dependencies {
-    implementation("io.nixer:nixer-plugin-core:0.1.1.0")
-    implementation("io.nixer:nixer-plugin-pwned-check:0.1.1.0")
+    implementation("io.nixer:nixer-plugin-core:{{ site.project.version }}")
+    implementation("io.nixer:nixer-plugin-pwned-check:{{ site.project.version }}")
 }
 ```
 
