@@ -26,14 +26,15 @@ credentials that have been leaked in a known data breach.
 The functionality operates on hashes of credentials and uses [Bloom filter](https://en.wikipedia.org/wiki/Bloom_filter) for doing the check. 
 
 The Bloom filter implementation being used offers great performance and can be applied on hot paths, 
-[read more here](https://github.com/nixer-io/nixer-spring-plugin/tree/master/bloom-filter).
+you can read [detailed documentation here]({{ site.baseurl }}/additional-features/#file-based-bloom-filter-for-java) 
+or see [the source code here](https://github.com/nixer-io/nixer-spring-plugin/tree/master/bloom-filter).
 
 ## Usage
 ### Data Source
 
 Before using the filter it must be populated with leaked credentials data to be checked against. 
 For this purpose we provide convenient command line utility, 
-[bloom-tool](https://github.com/nixer-io/nixer-spring-plugin/tree/master/bloom-tool), which allows generating, manipulating 
+[bloom-tool]({{ site.baseurl }}/additional-features/#bloom-cli-tool), which allows generating, manipulating 
 and testing Bloom filters.
 
 As a data source you can use pwned passwords lists available at [haveibeenpwned.com](https://haveibeenpwned.com/Passwords) 
