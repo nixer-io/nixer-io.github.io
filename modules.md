@@ -10,4 +10,4 @@ permalink: /modules/
 
 The plugin is divided into modules that offer distinct features. Depending on what features you need, you may choose selectively what modules to integrate into your application. 
 
-Nixer modules are available in [Maven Central](https://search.maven.org/search?q=io.nixer).
+Nixer modules are available in [Maven Central](https://mvnrepository.com/artifact/io.nixer).

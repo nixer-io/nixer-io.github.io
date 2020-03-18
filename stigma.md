@@ -80,7 +80,7 @@ that have been encrypted with any previous keys, so the "old" keys need to be ke
 ## Usage
 ### Installation
 
-Stigma Nixer plugin is distributed through [Maven Central](https://search.maven.org/search?q=io.nixer).
+Stigma Nixer plugin is distributed through [Maven Central](https://mvnrepository.com/artifact/io.nixer).
 
 It requires dependency to Core Nixer plugin as well.
 
