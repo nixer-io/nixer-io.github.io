@@ -112,40 +112,47 @@
     {
       "name": "nixer.events.elastic.enabled",
       "type": "java.lang.Boolean",
+      "description": "Whether anomaly events should be logged to Elasticsearch. Requires Elastic Search running.",
       "sourceType": "io.nixer.nixerplugin.core.detection.events.elastic.ElasticIndexProperties",
       "defaultValue": false
     },
     {
       "name": "nixer.events.elastic.index",
       "type": "java.lang.String",
+      "description": "Elasticsearch index.",
       "sourceType": "io.nixer.nixerplugin.core.detection.events.elastic.ElasticIndexProperties"
     },
     {
       "name": "nixer.events.elastic.type",
       "type": "java.lang.String",
+      "description": "Elasticsearch type.",
       "sourceType": "io.nixer.nixerplugin.core.detection.events.elastic.ElasticIndexProperties",
       "defaultValue": "_doc"
     },
     {
       "name": "nixer.events.log.enabled",
       "type": "java.lang.Boolean",
+      "description": "Whether anomaly events logging is enabled.",
       "sourceType": "io.nixer.nixerplugin.core.detection.events.log.EventLogProperties",
       "defaultValue": false
     },
     {
       "name": "nixer.filter.ip.enabled",
       "type": "java.lang.Boolean",
+      "description": "Whether matching requests IP addresses to defined IP ranges is enabled.",
       "sourceType": "io.nixer.nixerplugin.core.detection.filter.ip.IpFilterProperties",
       "defaultValue": false
     },
     {
       "name": "nixer.filter.ip.ip-prefixes-path",
       "type": "java.lang.String",
+      "description": "Location of file resource with the IP ranges. Can be either a \"classpath:\" pseudo URL, a \"file:\" URL, or a plain file path.",
       "sourceType": "io.nixer.nixerplugin.core.detection.filter.ip.IpFilterProperties"
     },
     {
       "name": "nixer.filters.dry-run",
       "type": "java.lang.Boolean",
+      "description": "Whether Nixer servlet filters should execute behaviors in dry-run mode.",
       "sourceType": "io.nixer.nixerplugin.core.detection.filter.FilterProperties",
       "defaultValue": false
     },
