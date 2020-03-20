@@ -33,9 +33,6 @@ dependencies {
 }
 ```
 
-After the dependencies are added all beans are created automatically with Spring's 
-[autoconfiguration mechanism](https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-auto-configuration).
-
 ### Signup
 To start with Recaptcha you need to create API key pair for your application.
 Follow official [guide](https://developers.google.com/recaptcha/intro) to sign-up and create keys.
