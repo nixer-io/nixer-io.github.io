@@ -14,11 +14,11 @@ permalink: /nixer-properties/
     
 ## {{ name | capitalize }} properties
 
-<table class="table table-striped table-bordered table-hover">
+<table class="table table-striped table-bordered table-hover" style="table-layout: fixed; word-wrap: break-word;">
 <colgroup>
-<col class="col-md-3" />
-<col class="col-md-3" />
-<col class="col-md-6" />
+<col style="width: 40%;">
+<col style="width: 15%;">
+<col style="width: 45%;">
 </colgroup>
 <thead>
 <tr class="header">
