@@ -8,6 +8,9 @@ permalink: /nixer-properties/
 
 # Nixer Application Properties Reference
 
+Nixer Spring Plugin is configured using the following application properties, which can be specified inside the `application.properties` 
+or `application.yml` file, or passed via command line.
+
 {% for module in site.data.nixer-props-metadata %}
 {% assign name = module[0] %}
 {% assign data = module[1] %}
@@ -41,6 +44,5 @@ permalink: /nixer-properties/
 
 </tbody>
 </table>
-    
 
 {% endfor %}
