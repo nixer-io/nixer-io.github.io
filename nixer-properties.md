@@ -17,7 +17,7 @@ or `application.yml` file, or passed via command line.
     
 ## {{ name | capitalize }} properties
 
-<table class="table table-striped table-bordered table-hover" style="table-layout: fixed; word-wrap: break-word;">
+<table class="table table-striped table-bordered table-hover nixer-props" style="table-layout: fixed; word-wrap: break-word;">
 <colgroup>
 <col style="width: 40%;">
 <col style="width: 15%;">
