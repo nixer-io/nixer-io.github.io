@@ -8,6 +8,8 @@ permalink: /getting-started/
 
 # Getting Started
 
+### 
+
 ### Plugin in Spring Boot MVC application
 
 In this getting started tutorial we will go though the process of integrating Nixer plugin into the simple Spring MVC application. If however you want to see necessary changes right away look at [the diff in examples repository](https://github.com/nixer-io/nixer-spring-plugin-integrations/compare/with%2Fnixer-plugin-getting-started?diff=split). Branch `master` contains application only and branch `with/nixer-plugin-getting-started` contains all the necessary modification to the codebase to have the plugin working.
@@ -57,11 +59,11 @@ It is not intuitive to read, but by looking at `iterations` row you can see that
 {:.table}
 |                      | executed  | failed |
 |----------------------|-----------|--------|
-| `iterations`         | 99        | 0      |
-| `requests`           | 198       | 0      |
-| `test-scripts`       | 396       | 0      |
-| `prerequest-scripts` | 396       | 0      |
-| `assertions`         | 495       | 0      |
+| `iterations`         | 100       | 0      |
+| `requests`           | 200       | 0      |
+| `test-scripts`       | 400       | 0      |
+| `prerequest-scripts` | 400       | 0      |
+| `assertions`         | 500       | 0      |
 | `total run duration: 16.2s`  
 
 
@@ -206,10 +208,11 @@ public FilterConfiguration.BehaviorProviderConfigurer behaviorConfigurer() {
     return builder -> builder
             .rule("usernameLoginOverThreshold")
             .when(Conditions::isUsernameLoginOverThreshold)
-            .then(CAPTCHA)
+            .then(Behaviors.CAPTCHA)
             .buildRule();
 }
 ```
+This rule will be activated when the condition `isUsernameLoginOverTreshold` is true and the rule will then execute CAPTCHA behavior which means in our case that it will present to the user Google's reCAPTCHA v2. You can see other defined behaviors in `io.nixer.nixerplugin.core.detection.filter.behavior.Behaviors`. Currently we provide __log__, __redirect__, __passthrough__ and __captcha__ behaviors. You can define your own by implementing `io.nixer.nixerplugin.core.detection.filter.behavior.Behavior` interface.
 
 That’s it, lets run the application again. 
 
@@ -269,11 +272,11 @@ Let's again to `io.nixer.springplugin.demo.WebSecurityConfig` and add a new rule
         return builder -> builder
                     .rule("usernameLoginOverThreshold")
                     .when(Conditions::isUsernameLoginOverThreshold)
-                    .then(CAPTCHA)
+                    .then(Behaviors.CAPTCHA)
                 .buildRule()
                     .rule("failedLoginRatioActive")
                     .when(Conditions::isFailedLoginRatioActive)
-                    .then(CAPTCHA)
+                    .then(Behaviors.CAPTCHA)
                 .buildRule();
     }
 ```
@@ -297,14 +300,14 @@ This time the results are following:
 {:.table}
 |                      | executed  | failed |
 |----------------------|-----------|--------|
-| `iterations`         | 99        | 0      |
-| `requests`           | 198       | 0      |
-| `test-scripts`       | 396       | 0      |
-| `prerequest-scripts` | 396       | 0      |
-| `assertions`         | 495       | 89     |
+| `iterations`         | 100       | 0      |
+| `requests`           | 200       | 0      |
+| `test-scripts`       | 400       | 0      |
+| `prerequest-scripts` | 400       | 0      |
+| `assertions`         | 500       | 90     |
 | `total run duration: 16.2s`  
 
-By looking at `assertions` row we can see 89 login attempts failed because captcha was displayed. If we analyze logs of the application, we would see multiple repetitions of following:
+By looking at `assertions` row we can see 90 login attempts failed because captcha was displayed. If we analyze logs of the application, we would see multiple repetitions of following:
 ```
 FailedLoginRatioRegistry : FAILED_LOGIN_RATIO event was caught with ratio: 1.0
 .BehaviorExecutionFilter : Executing behavior: CAPTCHA
@@ -374,17 +377,17 @@ By reading the logs, we can see that the ratio was slowly increasing because the
 
 Which means that out 108 login attempts 82 were blocked. 
 
-Now, let's modify the `test-cs.data.csv` file again by adding 20 `demo:demo` attempts at the beginning of the file (25 first login attemps will be correct). Then restart the application again, re-run the test and see the results for such case:
+Now, let's modify the `test-cs.data.csv` file again by adding 20 `demo:demo` attempts at the beginning of the file (23 first login attempts will be correct). Then restart the application again, re-run the test and see the results for such case:
  
 {:.table}
 |                      | executed  | failed |
 |----------------------|-----------|--------|
-| `iterations`         | 128       | 0      |
+| `iterations`         | 127       | 0      |
 | ...                  | ...       | ...    |
-| `assertions`         | 640       | 45     |
+| `assertions`         | 635       | 49     |
 | `total run duration: 59s`  
 
-This time, 45 requests were blocked out of 128. As you can see, a lot depends on state of the system but once the ratio increases to the `activationLevel`, it executes Behavior and should not drop below `deactivationLevel` during traditional credential stuffing attack. 
+This time, 49 requests were blocked out of 127. As you can see, a lot depends on state of the system but once the ratio increases to the `activationLevel`, it executes Behavior and should not drop below `deactivationLevel` during traditional credential stuffing attack. 
 
 When tuning the parameters it is good to know about two fundamental things: what is the _failed-login-ratio_ for genuine users and what is the rate of login attempts within the system. Though our defaults are quite generic and can be used as a starting point.
 
