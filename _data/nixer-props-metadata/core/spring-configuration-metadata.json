@@ -159,30 +159,35 @@
     {
       "name": "nixer.rules.failed-login-ratio-level.activation-level",
       "type": "java.lang.Integer",
+      "description": "Defines value of failed-login-ratio metric on which an activation event will be generated. By default, the rule will be activated when 80% or more of the login requests will be a failed ones. Activation level unit are percentages. Metric failed-login-ratio is calculated as follows: <pre>    failed-login-ratio = (100 * number or failed logins) \/ (number of all logins) <\/pre> Activation and deactivation levels create hysteresis to better cope with credential stuffing and also to prevent too frequent activation\/deactivation events.",
       "sourceType": "io.nixer.nixerplugin.core.detection.config.FailedLoginRatioProperties",
       "defaultValue": 80
     },
     {
       "name": "nixer.rules.failed-login-ratio-level.deactivation-level",
       "type": "java.lang.Integer",
+      "description": "Property deactivationLevel defines value of failed-login-ratio below which deactivation event will be generated disabling protection mechanism. Deactivation level unit are percentages. Metric failed-login-ratio is calculated as follows: <pre>     failed-login-ratio = (100 * number or failed logins) \/ (number of all logins) <\/pre> Activation and deactivation levels create hysteresis to better cope with credential stuffing and also to prevent too frequent activation\/deactivation events.",
       "sourceType": "io.nixer.nixerplugin.core.detection.config.FailedLoginRatioProperties",
       "defaultValue": 70
     },
     {
       "name": "nixer.rules.failed-login-ratio-level.enabled",
       "type": "java.lang.Boolean",
+      "description": "Whether failed login ratio feature is enabled.",
       "sourceType": "io.nixer.nixerplugin.core.detection.config.FailedLoginRatioProperties",
       "defaultValue": false
     },
     {
       "name": "nixer.rules.failed-login-ratio-level.minimum-sample-size",
       "type": "java.lang.Integer",
+      "description": "Property minimumSampleSize defines the smallest number of login attempts that need to occur within window for the activation to happen. The reason for this property is that when there is a small number of login attempts, we don’t necessarily want to trigger activation.",
       "sourceType": "io.nixer.nixerplugin.core.detection.config.FailedLoginRatioProperties",
       "defaultValue": 20
     },
     {
       "name": "nixer.rules.failed-login-ratio-level.window",
       "type": "java.time.Duration",
+      "description": "Property window defines time period for which the ratio will be calculated. Longer periods would consume more memory (unless external data store is used) and would cause slower reaction to changes in traffic patterns.",
       "sourceType": "io.nixer.nixerplugin.core.detection.config.FailedLoginRatioProperties"
     },
     {
