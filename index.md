@@ -20,7 +20,7 @@ The documentation is organised as following:
 
 * [Examples]({{ site.baseurl }}/examples) of complete Spring applications using the plugin.
 
-* [Extending Nixer]({{ site.baseurl }}/extending-nixer) helps developers customize and extend the plugin.
+* [Configuring Nixer]({{ site.baseurl }}/configuring-nixer) provides developers with details about configuring and customizing the plugin. 
 
 * [Additional Features]({{ site.baseurl }}/additional-features) describes features that can be used without the plugin.
 
