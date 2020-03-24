@@ -1,12 +1,12 @@
 ---
 layout: page
 homepage: true
-short_title: "Nixer Properties"
+short_title: "Configuring Nixer"
 side_menu: true
-permalink: /nixer-properties/
+permalink: /configuring-nixer/
 ---
 
-# Nixer Application Properties Reference
+# Configuring Nixer
 
 Nixer Spring Plugin is configured using the following application properties, which can be specified inside the `application.properties` 
 or `application.yml` file, or passed via command line.
