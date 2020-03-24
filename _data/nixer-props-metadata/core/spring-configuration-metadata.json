@@ -159,7 +159,7 @@
     {
       "name": "nixer.rules.failed-login-ratio-level.activation-level",
       "type": "java.lang.Integer",
-      "description": "Defines value of failed-login-ratio metric on which an activation event will be generated. By default, the rule will be activated when 80% or more of the login requests will be a failed ones. Activation level unit are percentages. Metric failed-login-ratio is calculated as follows: <br\/><code>failed-login-ratio = (100 * number or failed logins) \/ (number of all logins) <\/code><br\/> Activation and deactivation levels create hysteresis to better cope with credential stuffing and also to prevent too frequent activation\/deactivation events.",
+      "description": "Defines value of failed-login-ratio metric on which an activation event will be generated.",
       "sourceType": "io.nixer.nixerplugin.core.detection.config.FailedLoginRatioProperties",
       "defaultValue": 80
     },
