@@ -70,7 +70,7 @@ a.navbar-brand > img {
     }
 }
 
-p > code.highlighter-rouge {
+p > code.highlighter-rouge, td > code.highlighter-rouge, table.nixer-props code {
   color: #37474f;
   font-size: 90%;
   font-family: monospace;
