@@ -24,7 +24,7 @@
     {
       "name": "nixer.pwned.check.password-parameter",
       "type": "java.lang.String",
-      "description": "Name of the HTTP form parameter passing the password.",
+      "description": "The HTTP parameter to look for the password when performing the check. **Must follow the value of** `org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter#passwordParameter` which is might be changed by `org.springframework.security.config.annotation.web.configurers.FormLoginConfigurer`. Defaults to the Spring Security default value.",
       "sourceType": "io.nixer.nixerplugin.pwned.PwnedCheckProperties",
       "defaultValue": "password"
     },
