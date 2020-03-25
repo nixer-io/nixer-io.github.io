@@ -159,7 +159,7 @@
     {
       "name": "nixer.rules.failed-login-ratio-level.activation-level",
       "type": "java.lang.Integer",
-      "description": "Percentage value of <code>failed-login-ratio<\/code> metric above which an activation event will be generated.",
+      "description": "Percentage value of failed-login-ratio metric above which an activation event will be generated.",
       "sourceType": "io.nixer.nixerplugin.core.detection.config.FailedLoginRatioProperties",
       "defaultValue": 80
     },
