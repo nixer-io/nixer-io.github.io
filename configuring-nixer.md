@@ -37,7 +37,7 @@ or `application.yml` file, or passed via command line.
 <tr>
 <td markdown="span">`{{ prop.name }}`</td>
 <td markdown="span">{% if prop.defaultValue %}`{{ prop.defaultValue }}`{% endif %}</td>
-<td markdown="span">{{ prop.description }}</td>
+<td markdown="span">{{ prop.description | strip_html }}</td>
 </tr>
 {% endif %}
 {% endfor %}   
