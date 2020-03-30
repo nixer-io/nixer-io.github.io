@@ -29,11 +29,11 @@ The implementation is wrapped with a reusable Java library called simply `bloom-
 
 #### Installation and usage
 
-The `bloom-filter` library is distributed through [Maven Central](https://search.maven.org/search?q=io.nixer).
+The `bloom-filter` library is distributed through [Maven Central]({{ site.project.mvn_repo_url }}).
 
 ```kotlin
 dependencies {
-    implementation("io.nixer:bloom-filter:0.1.1.0")
+    implementation("io.nixer:bloom-filter:{{ site.project.version }}")
 }
 ```
 

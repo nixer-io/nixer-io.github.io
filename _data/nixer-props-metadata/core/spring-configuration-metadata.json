@@ -1,0 +1,258 @@
+{
+  "groups": [
+    {
+      "name": "management.endpoint.behaviors",
+      "type": "io.nixer.nixerplugin.core.detection.filter.behavior.BehaviorEndpoint",
+      "sourceType": "io.nixer.nixerplugin.core.detection.filter.behavior.BehaviorEndpoint"
+    },
+    {
+      "name": "nixer.behaviors",
+      "type": "io.nixer.nixerplugin.core.detection.filter.behavior.BehaviorsProperties",
+      "sourceType": "io.nixer.nixerplugin.core.detection.filter.behavior.BehaviorsProperties"
+    },
+    {
+      "name": "nixer.behaviors.log",
+      "type": "io.nixer.nixerplugin.core.detection.filter.behavior.BehaviorsProperties$LogBehaviorProperties",
+      "sourceType": "io.nixer.nixerplugin.core.detection.filter.behavior.BehaviorsProperties",
+      "sourceMethod": "getLog()"
+    },
+    {
+      "name": "nixer.events.elastic",
+      "type": "io.nixer.nixerplugin.core.detection.events.elastic.ElasticIndexProperties",
+      "sourceType": "io.nixer.nixerplugin.core.detection.events.elastic.ElasticIndexProperties"
+    },
+    {
+      "name": "nixer.events.log",
+      "type": "io.nixer.nixerplugin.core.detection.events.log.EventLogProperties",
+      "sourceType": "io.nixer.nixerplugin.core.detection.events.log.EventLogProperties"
+    },
+    {
+      "name": "nixer.filter.ip",
+      "type": "io.nixer.nixerplugin.core.detection.filter.ip.IpFilterProperties",
+      "sourceType": "io.nixer.nixerplugin.core.detection.filter.ip.IpFilterProperties"
+    },
+    {
+      "name": "nixer.filters",
+      "type": "io.nixer.nixerplugin.core.detection.filter.FilterProperties",
+      "sourceType": "io.nixer.nixerplugin.core.detection.filter.FilterProperties"
+    },
+    {
+      "name": "nixer.rules",
+      "type": "io.nixer.nixerplugin.core.detection.config.AnomalyRulesProperties",
+      "sourceType": "io.nixer.nixerplugin.core.detection.config.AnomalyRulesProperties"
+    },
+    {
+      "name": "nixer.rules.failed-login-ratio-level",
+      "type": "io.nixer.nixerplugin.core.detection.config.FailedLoginRatioProperties",
+      "sourceType": "io.nixer.nixerplugin.core.detection.DetectionConfiguration$FailedLoginRatioRule",
+      "sourceMethod": "failedLoginRatioProperties()"
+    },
+    {
+      "name": "nixer.rules.failed-login-threshold.ip",
+      "type": "io.nixer.nixerplugin.core.detection.config.WindowThresholdRuleProperties",
+      "sourceType": "io.nixer.nixerplugin.core.detection.DetectionConfiguration$IpThresholdRule",
+      "sourceMethod": "ipThresholdRulesProperties()"
+    },
+    {
+      "name": "nixer.rules.failed-login-threshold.useragent",
+      "type": "io.nixer.nixerplugin.core.detection.config.WindowThresholdRuleProperties",
+      "sourceType": "io.nixer.nixerplugin.core.detection.DetectionConfiguration$UserAgentThresholdRule",
+      "sourceMethod": "userAgentThresholdRulesProperties()"
+    },
+    {
+      "name": "nixer.rules.failed-login-threshold.username",
+      "type": "io.nixer.nixerplugin.core.detection.config.WindowThresholdRuleProperties",
+      "sourceType": "io.nixer.nixerplugin.core.detection.DetectionConfiguration$UsernameThresholdRule",
+      "sourceMethod": "usernameThresholdRulesProperties()"
+    }
+  ],
+  "properties": [
+    {
+      "name": "management.endpoint.behaviors.cache.time-to-live",
+      "type": "java.time.Duration",
+      "description": "Maximum time that a response can be cached.",
+      "sourceType": "io.nixer.nixerplugin.core.detection.filter.behavior.BehaviorEndpoint",
+      "defaultValue": "0ms"
+    },
+    {
+      "name": "management.endpoint.behaviors.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Whether to enable the behaviors endpoint.",
+      "sourceType": "io.nixer.nixerplugin.core.detection.filter.behavior.BehaviorEndpoint",
+      "defaultValue": true
+    },
+    {
+      "name": "nixer.behaviors.log.include-headers",
+      "type": "java.lang.Boolean",
+      "description": "Whether http headers should be logged",
+      "sourceType": "io.nixer.nixerplugin.core.detection.filter.behavior.BehaviorsProperties$LogBehaviorProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "nixer.behaviors.log.include-metadata",
+      "type": "java.lang.Boolean",
+      "description": "Whether metadata about request should be logged. Includes pwned check results, ip lookup match, thresholds exceeded",
+      "sourceType": "io.nixer.nixerplugin.core.detection.filter.behavior.BehaviorsProperties$LogBehaviorProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "nixer.behaviors.log.include-query-string",
+      "type": "java.lang.Boolean",
+      "description": "Whether query part of uri should be logged",
+      "sourceType": "io.nixer.nixerplugin.core.detection.filter.behavior.BehaviorsProperties$LogBehaviorProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "nixer.behaviors.log.include-user-info",
+      "type": "java.lang.Boolean",
+      "description": "Whether user info should be logged. Includes ip, username, session_id",
+      "sourceType": "io.nixer.nixerplugin.core.detection.filter.behavior.BehaviorsProperties$LogBehaviorProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "nixer.events.elastic.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Whether anomaly events should be logged to Elasticsearch. Requires Elastic Search running.",
+      "sourceType": "io.nixer.nixerplugin.core.detection.events.elastic.ElasticIndexProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "nixer.events.elastic.index",
+      "type": "java.lang.String",
+      "description": "Elasticsearch index.",
+      "sourceType": "io.nixer.nixerplugin.core.detection.events.elastic.ElasticIndexProperties"
+    },
+    {
+      "name": "nixer.events.elastic.type",
+      "type": "java.lang.String",
+      "description": "Elasticsearch type.",
+      "sourceType": "io.nixer.nixerplugin.core.detection.events.elastic.ElasticIndexProperties",
+      "defaultValue": "_doc"
+    },
+    {
+      "name": "nixer.events.log.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Whether anomaly events logging is enabled.",
+      "sourceType": "io.nixer.nixerplugin.core.detection.events.log.EventLogProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "nixer.filter.ip.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Whether matching requests IP addresses to defined IP ranges is enabled.",
+      "sourceType": "io.nixer.nixerplugin.core.detection.filter.ip.IpFilterProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "nixer.filter.ip.ip-prefixes-path",
+      "type": "java.lang.String",
+      "description": "Location of file resource with the IP ranges. Can be either a \"classpath:\" pseudo URL, a \"file:\" URL, or a plain file path.",
+      "sourceType": "io.nixer.nixerplugin.core.detection.filter.ip.IpFilterProperties"
+    },
+    {
+      "name": "nixer.filters.dry-run",
+      "type": "java.lang.Boolean",
+      "description": "Whether Nixer servlet filters should execute behaviors in dry-run mode.",
+      "sourceType": "io.nixer.nixerplugin.core.detection.filter.FilterProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "nixer.rules.failed-login-ratio-level.activation-level",
+      "type": "java.lang.Integer",
+      "description": "Percentage value of failed-login-ratio metric above which an activation event will be generated.",
+      "sourceType": "io.nixer.nixerplugin.core.detection.config.FailedLoginRatioProperties",
+      "defaultValue": 80
+    },
+    {
+      "name": "nixer.rules.failed-login-ratio-level.deactivation-level",
+      "type": "java.lang.Integer",
+      "description": "Percentage value of failed-login-ratio metric below which a deactivation event will be generated.",
+      "sourceType": "io.nixer.nixerplugin.core.detection.config.FailedLoginRatioProperties",
+      "defaultValue": 70
+    },
+    {
+      "name": "nixer.rules.failed-login-ratio-level.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Whether failed login ratio feature is enabled.",
+      "sourceType": "io.nixer.nixerplugin.core.detection.config.FailedLoginRatioProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "nixer.rules.failed-login-ratio-level.minimum-sample-size",
+      "type": "java.lang.Integer",
+      "description": "Property minimumSampleSize defines the smallest number of login attempts that need to occur within window for the activation to happen. The reason for this property is that when there is a small number of login attempts, we don’t necessarily want to trigger activation.",
+      "sourceType": "io.nixer.nixerplugin.core.detection.config.FailedLoginRatioProperties",
+      "defaultValue": 20
+    },
+    {
+      "name": "nixer.rules.failed-login-ratio-level.window",
+      "type": "java.time.Duration",
+      "description": "Property window defines time period for which the ratio will be calculated. Longer periods would consume more memory (unless external data store is used) and would cause slower reaction to changes in traffic patterns.",
+      "sourceType": "io.nixer.nixerplugin.core.detection.config.FailedLoginRatioProperties"
+    },
+    {
+      "name": "nixer.rules.failed-login-threshold",
+      "type": "java.util.Map<io.nixer.nixerplugin.core.detection.config.AnomalyRulesProperties$Name,io.nixer.nixerplugin.core.detection.config.WindowThresholdRuleProperties>",
+      "description": "Maps rule properties by name that they correspond to",
+      "sourceType": "io.nixer.nixerplugin.core.detection.config.AnomalyRulesProperties"
+    },
+    {
+      "name": "nixer.rules.failed-login-threshold.ip.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Whether rule is enabled. Disabled by default.",
+      "sourceType": "io.nixer.nixerplugin.core.detection.config.WindowThresholdRuleProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "nixer.rules.failed-login-threshold.ip.threshold",
+      "type": "java.lang.Integer",
+      "description": "Defines at what metric value rule will trigger",
+      "sourceType": "io.nixer.nixerplugin.core.detection.config.WindowThresholdRuleProperties"
+    },
+    {
+      "name": "nixer.rules.failed-login-threshold.ip.window",
+      "type": "java.time.Duration",
+      "description": "Window size in minutes that will be used to calculate metric.",
+      "sourceType": "io.nixer.nixerplugin.core.detection.config.WindowThresholdRuleProperties"
+    },
+    {
+      "name": "nixer.rules.failed-login-threshold.useragent.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Whether rule is enabled. Disabled by default.",
+      "sourceType": "io.nixer.nixerplugin.core.detection.config.WindowThresholdRuleProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "nixer.rules.failed-login-threshold.useragent.threshold",
+      "type": "java.lang.Integer",
+      "description": "Defines at what metric value rule will trigger",
+      "sourceType": "io.nixer.nixerplugin.core.detection.config.WindowThresholdRuleProperties"
+    },
+    {
+      "name": "nixer.rules.failed-login-threshold.useragent.window",
+      "type": "java.time.Duration",
+      "description": "Window size in minutes that will be used to calculate metric.",
+      "sourceType": "io.nixer.nixerplugin.core.detection.config.WindowThresholdRuleProperties"
+    },
+    {
+      "name": "nixer.rules.failed-login-threshold.username.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Whether rule is enabled. Disabled by default.",
+      "sourceType": "io.nixer.nixerplugin.core.detection.config.WindowThresholdRuleProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "nixer.rules.failed-login-threshold.username.threshold",
+      "type": "java.lang.Integer",
+      "description": "Defines at what metric value rule will trigger",
+      "sourceType": "io.nixer.nixerplugin.core.detection.config.WindowThresholdRuleProperties"
+    },
+    {
+      "name": "nixer.rules.failed-login-threshold.username.window",
+      "type": "java.time.Duration",
+      "description": "Window size in minutes that will be used to calculate metric.",
+      "sourceType": "io.nixer.nixerplugin.core.detection.config.WindowThresholdRuleProperties"
+    }
+  ],
+  "hints": []
+}

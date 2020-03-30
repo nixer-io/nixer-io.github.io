@@ -1,0 +1,36 @@
+{
+  "groups": [
+    {
+      "name": "nixer.stigma",
+      "type": "io.nixer.nixerplugin.stigma.StigmaProperties",
+      "sourceType": "io.nixer.nixerplugin.stigma.StigmaProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "nixer.stigma.cookie-name",
+      "type": "java.lang.String",
+      "description": "Name of HTTP cookie to be used for storing Stigma Token.",
+      "sourceType": "io.nixer.nixerplugin.stigma.StigmaProperties"
+    },
+    {
+      "name": "nixer.stigma.decryption-key-file",
+      "type": "java.lang.String",
+      "description": "Location of file resource with decryption keys to be used for reading Stigma Tokens. Can be either a \"classpath:\" pseudo URL, a \"file:\" URL, or a plain file path.",
+      "sourceType": "io.nixer.nixerplugin.stigma.StigmaProperties"
+    },
+    {
+      "name": "nixer.stigma.encryption-key-file",
+      "type": "java.lang.String",
+      "description": "Location of file resource with encryption key to be used for creating Stigma Tokens. Can be either a \"classpath:\" pseudo URL, a \"file:\" URL, or a plain file path.",
+      "sourceType": "io.nixer.nixerplugin.stigma.StigmaProperties"
+    },
+    {
+      "name": "nixer.stigma.stigma-lifetime",
+      "type": "java.time.Duration",
+      "description": "Amount of time after Stigma is considered expired.",
+      "sourceType": "io.nixer.nixerplugin.stigma.StigmaProperties"
+    }
+  ],
+  "hints": []
+}

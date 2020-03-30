@@ -5,7 +5,8 @@ might be valuable for various reasons, e.g. as a hint for a suspicious request i
 
 We provide a simple Python script which purpose is to gather the actual IP ranges for various cloud providers.
 
-The script is available [here](https://github.com/nixer-io/nixer-spring-plugin/tree/master/scripts/ip_cloud_ranges).
+The script package is available as an asset in [each release of Nixer Spring Plugin](https://github.com/nixer-io/nixer-spring-plugin/releases/latest),
+you can also see the source code [here](https://github.com/nixer-io/nixer-spring-plugin/tree/master/scripts/ip_cloud_ranges).
  
 #### Supported cloud providers
 

@@ -20,6 +20,19 @@ To integrate captcha application needs to:
  - verified captcha response on server
  - connect it to Spring Security
 
+### Installation
+
+Captcha Nixer plugin is distributed through [Maven Central]({{ site.project.mvn_repo_url }}).
+
+It requires dependency to Core Nixer plugin as well.
+
+```kotlin
+dependencies {
+    implementation("io.nixer:nixer-plugin-core:{{ site.project.version }}")
+    implementation("io.nixer:nixer-plugin-captcha:{{ site.project.version }}")
+}
+```
+
 ### Signup
 To start with Recaptcha you need to create API key pair for your application.
 Follow official [guide](https://developers.google.com/recaptcha/intro) to sign-up and create keys.

@@ -1,0 +1,39 @@
+{
+  "groups": [
+    {
+      "name": "nixer.pwned.check",
+      "type": "io.nixer.nixerplugin.pwned.PwnedCheckProperties",
+      "sourceType": "io.nixer.nixerplugin.pwned.PwnedCheckProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "nixer.pwned.check.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Indicates pwned-check functionality is enabled.",
+      "sourceType": "io.nixer.nixerplugin.pwned.PwnedCheckProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "nixer.pwned.check.max-password-length",
+      "type": "java.lang.Integer",
+      "description": "Limit for length of the checked password. Mitigates the risk of flooding the system with unnaturally long passwords. Passwords longer than this limit will not be checked and treated as false match.",
+      "sourceType": "io.nixer.nixerplugin.pwned.PwnedCheckProperties",
+      "defaultValue": 50
+    },
+    {
+      "name": "nixer.pwned.check.password-parameter",
+      "type": "java.lang.String",
+      "description": "The HTTP parameter to look for the password when performing the check. **Must follow the value of** `org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter#passwordParameter` which is might be changed by `org.springframework.security.config.annotation.web.configurers.FormLoginConfigurer`. Defaults to the Spring Security default value.",
+      "sourceType": "io.nixer.nixerplugin.pwned.PwnedCheckProperties",
+      "defaultValue": "password"
+    },
+    {
+      "name": "nixer.pwned.check.pwned-file-path",
+      "type": "java.lang.String",
+      "description": "Location of leaked credentials data file",
+      "sourceType": "io.nixer.nixerplugin.pwned.PwnedCheckProperties"
+    }
+  ],
+  "hints": []
+}

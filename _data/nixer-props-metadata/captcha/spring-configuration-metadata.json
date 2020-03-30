@@ -1,0 +1,113 @@
+{
+  "groups": [
+    {
+      "name": "management.endpoint.captcha",
+      "type": "io.nixer.nixerplugin.captcha.endpoint.CaptchaEndpoint",
+      "sourceType": "io.nixer.nixerplugin.captcha.endpoint.CaptchaEndpoint"
+    },
+    {
+      "name": "nixer.captcha.recaptcha",
+      "type": "io.nixer.nixerplugin.captcha.recaptcha.RecaptchaProperties",
+      "sourceType": "io.nixer.nixerplugin.captcha.recaptcha.RecaptchaProperties"
+    },
+    {
+      "name": "nixer.captcha.recaptcha.http",
+      "type": "io.nixer.nixerplugin.captcha.recaptcha.RecaptchaProperties$Http",
+      "sourceType": "io.nixer.nixerplugin.captcha.recaptcha.RecaptchaProperties",
+      "sourceMethod": "getHttp()"
+    },
+    {
+      "name": "nixer.captcha.recaptcha.http.timeout",
+      "type": "io.nixer.nixerplugin.captcha.recaptcha.RecaptchaProperties$Timeout",
+      "sourceType": "io.nixer.nixerplugin.captcha.recaptcha.RecaptchaProperties$Http",
+      "sourceMethod": "getTimeout()"
+    },
+    {
+      "name": "nixer.captcha.recaptcha.key",
+      "type": "io.nixer.nixerplugin.captcha.recaptcha.RecaptchaProperties$RecaptchaKeys",
+      "sourceType": "io.nixer.nixerplugin.captcha.recaptcha.RecaptchaProperties",
+      "sourceMethod": "getKey()"
+    },
+    {
+      "name": "nixer.login.captcha",
+      "type": "io.nixer.nixerplugin.captcha.config.LoginCaptchaProperties",
+      "sourceType": "io.nixer.nixerplugin.captcha.config.LoginCaptchaProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "management.endpoint.captcha.cache.time-to-live",
+      "type": "java.time.Duration",
+      "description": "Maximum time that a response can be cached.",
+      "sourceType": "io.nixer.nixerplugin.captcha.endpoint.CaptchaEndpoint",
+      "defaultValue": "0ms"
+    },
+    {
+      "name": "management.endpoint.captcha.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Whether to enable the captcha endpoint.",
+      "sourceType": "io.nixer.nixerplugin.captcha.endpoint.CaptchaEndpoint",
+      "defaultValue": true
+    },
+    {
+      "name": "nixer.captcha.recaptcha.http.max-connections",
+      "type": "java.lang.Integer",
+      "description": "Maximum number of connection established",
+      "sourceType": "io.nixer.nixerplugin.captcha.recaptcha.RecaptchaProperties$Http",
+      "defaultValue": 10
+    },
+    {
+      "name": "nixer.captcha.recaptcha.http.timeout.connect",
+      "type": "java.lang.Integer",
+      "description": "Http connection timeout",
+      "sourceType": "io.nixer.nixerplugin.captcha.recaptcha.RecaptchaProperties$Timeout",
+      "defaultValue": 1000
+    },
+    {
+      "name": "nixer.captcha.recaptcha.http.timeout.connection-request",
+      "type": "java.lang.Integer",
+      "description": "Timeout for request for connection from pool",
+      "sourceType": "io.nixer.nixerplugin.captcha.recaptcha.RecaptchaProperties$Timeout",
+      "defaultValue": 1000
+    },
+    {
+      "name": "nixer.captcha.recaptcha.http.timeout.read",
+      "type": "java.lang.Integer",
+      "description": "Socket read timeout",
+      "sourceType": "io.nixer.nixerplugin.captcha.recaptcha.RecaptchaProperties$Timeout",
+      "defaultValue": 1000
+    },
+    {
+      "name": "nixer.captcha.recaptcha.key.secret",
+      "type": "java.lang.String",
+      "description": "Secret key for Google Recaptcha API",
+      "sourceType": "io.nixer.nixerplugin.captcha.recaptcha.RecaptchaProperties$RecaptchaKeys"
+    },
+    {
+      "name": "nixer.captcha.recaptcha.key.site",
+      "type": "java.lang.String",
+      "description": "Site key for Google Recaptcha API",
+      "sourceType": "io.nixer.nixerplugin.captcha.recaptcha.RecaptchaProperties$RecaptchaKeys"
+    },
+    {
+      "name": "nixer.captcha.recaptcha.verify-url",
+      "type": "java.lang.String",
+      "description": "Http url of Google service used to verify captcha",
+      "sourceType": "io.nixer.nixerplugin.captcha.recaptcha.RecaptchaProperties"
+    },
+    {
+      "name": "nixer.login.captcha.condition",
+      "type": "io.nixer.nixerplugin.captcha.security.CaptchaCondition",
+      "description": "Determines whether captcha challenge applies",
+      "sourceType": "io.nixer.nixerplugin.captcha.config.LoginCaptchaProperties"
+    },
+    {
+      "name": "nixer.login.captcha.param",
+      "type": "java.lang.String",
+      "description": "Name of Http parameter name containing captcha response",
+      "sourceType": "io.nixer.nixerplugin.captcha.config.LoginCaptchaProperties",
+      "defaultValue": "g-recaptcha-response"
+    }
+  ],
+  "hints": []
+}

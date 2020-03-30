@@ -75,15 +75,15 @@ Now that we established that default Spring Boot web application is prone to cre
 ### Integrate captcha
 In this section we are going to start modifying code of the demo application under `nixer-spring-plugin-integrations/nixer-spring-plugin-demo-app`. 
 
-The plugin modules are available in [Maven Central](https://search.maven.org/search?q=g:io.nixer). 
+The plugin modules are available in [Maven Central]({{ site.project.mvn_repo_url }}). 
 
 We are going to start this tutorial by using two of them, the mandatory [Core module]({{ site.baseurl }}/core) and the
 [Captcha module]({{ site.baseurl }}/core) providing captcha protection.
 
 Let’s add them as dependencies to the `build.gradle` file:
 ```
-implementation "io.nixer:nixer-plugin-core:0.1.1.0"
-implementation "io.nixer:nixer-plugin-captcha:0.1.1.0"
+implementation "io.nixer:nixer-plugin-core:{{ site.project.version }}"
+implementation "io.nixer:nixer-plugin-captcha:{{ site.project.version }}"
 ```
 
 Now, we can start adding features to the application. The plugin leverages Spring Boot's [auto configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-auto-configuration) mechanism, so needed beans will be created automatically.

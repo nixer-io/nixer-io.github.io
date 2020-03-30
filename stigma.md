@@ -80,19 +80,16 @@ that have been encrypted with any previous keys, so the "old" keys need to be ke
 ## Usage
 ### Installation
 
-Stigma Nixer plugin is distributed through [Maven Central](https://search.maven.org/search?q=io.nixer).
+Stigma Nixer plugin is distributed through [Maven Central]({{ site.project.mvn_repo_url }}).
 
 It requires dependency to Core Nixer plugin as well.
 
 ```kotlin
 dependencies {
-    implementation("io.nixer:nixer-plugin-core:0.1.1.0")
-    implementation("io.nixer:nixer-plugin-stigma:0.1.1.0")
+    implementation("io.nixer:nixer-plugin-core:{{ site.project.version }}")
+    implementation("io.nixer:nixer-plugin-stigma:{{ site.project.version }}")
 }
 ```
-
-After the dependencies are added all beans are created automatically with Spring's 
-[autoconfiguration mechanism](https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-auto-configuration).
 
 ### Configuration
 
