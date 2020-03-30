@@ -8,11 +8,11 @@ permalink: /getting-started/
 
 # Getting Started
 
-### 
+Nixer plugin protects Spring application against credential stuffing attack. In credential stuffing, the attacker performs massive login attempts with leaked credentials from data breaches that eventually leads to account takeovers. 
 
 ### Plugin in Spring Boot MVC application
 
-In this getting started tutorial we will go though the process of integrating Nixer plugin into the simple Spring MVC application. If however you want to see necessary changes right away look at [the diff in examples repository](https://github.com/nixer-io/nixer-spring-plugin-integrations/compare/with%2Fnixer-plugin-getting-started?diff=split). Branch `master` contains application only and branch `with/nixer-plugin-getting-started` contains all the necessary modification to the codebase to have the plugin working.
+In this getting started tutorial we will go though the process of integrating Nixer plugin into the simple Spring MVC application that leverages [Spring Security](https://spring.io/projects/spring-security). If however you want to see necessary changes right away look at [the diff in examples repository](https://github.com/nixer-io/nixer-spring-plugin-integrations/compare/with%2Fnixer-plugin-getting-started?diff=split). Branch `master` contains application only and branch `with/nixer-plugin-getting-started` contains all the necessary modification to the codebase to have the plugin working.
 
 ### Spring application
 First, let’s check out the default application we will use in this tutorial. Let’s clone the GitHub repository, build the application and run it locally.
@@ -32,9 +32,7 @@ password: demo
 As you can see, this is a very simple _Todo app_. The application uses the most simple and standard way of doing things in Spring Boot. In the next step, we will explore the behavior of such a default application under credential stuffing attack.
 
 ### Credential stuffing attack
-For this example, we will only consider the simplest credential stuffing attack. The attack will consist of consecutive login attempts executed one after another. For simulating this scenario, we will use Postman or rather its headless version Newman.
-
-More specifically, we will use a Nixer fork of Newman with custom modification that provides programmatic access to Cookies - we needed it to automate the test scenarios. You can review our modifications [here on branch feature/cookies-domain-whitelist](https://github.com/nixer-io/newman/compare/develop...feature/cookies-domain-whitelist). 
+For this example, we will only consider the simplest credential stuffing attack. The attack will consist of consecutive login attempts executed one after another. For simulating this scenario, we will use Postman or rather its headless version [Newman](https://github.com/postmanlabs/newman).
 
 In order to test the application, go to test scenarios directory:
 ```
@@ -106,9 +104,7 @@ nixer.captcha.recaptcha.key.site=6LetVa4UAAAAAPpwWsl3LRRk8qCRfZvKJjE0U4Om
 nixer.captcha.recaptcha.key.secret=6LetVa4UAAAAAAAa1f1PaqgStH8rgV5sqTlUxGd4
 ```
 
-We will have to apply the captcha to login page. In this application, login page is defined in the Thymeleaf template file:
-`templates/login.html`. Let’s modify it to include Google reCAPTCHA v2 checkbox version. You can read about details in 
-[the official reCAPTCHA documentation](https://developers.google.com/recaptcha/docs/display). 
+We will have to apply the captcha to login page. In this application, login page is defined in the Thymeleaf template file `templates/login.html`. Thymeleaf is the default, popular templating engine for Spring but of course any other templating engine can be used here as well. Let’s modify template file to include Google reCAPTCHA v2 checkbox version. You can read about details in [the official reCAPTCHA documentation](https://developers.google.com/recaptcha/docs/display). 
 
 We have to load captcha script by adding following line in the `<head>` section: 
 ```html
@@ -314,8 +310,9 @@ FailedLoginRatioRegistry : FAILED_LOGIN_RATIO event was caught with ratio: 1.0
 ``` 
 Because in the data we only have non-existing users, failed-login-ratio is 100%. When limit for `minimumSampleSize` is exceeded (10 attempts), all further attempts are required captcha which is not solved by this test, which causes the assertion failure. 
 
-Now, let's examine how the application would act if there would be successful login attempts in the data as well. Let's open `test-cs.data.csv` file in in `e2e-tests` directory. For this example I will modify head of the file by adding correct `demo:demo` login attempts:
+Now, let's examine how the application would act if there would be successful login attempts in the data as well. Let's open `test-cs.data.csv` file in in `e2e-tests` directory. Columns of this _csv_ file contain `username,password,valid` entries, `valid` is a boolean value stating whether the credentials are correct (user with this password exists in the tested system). For this example I will modify head of the file by adding correct `demo:demo,true` login attempts. These credentials are configured to be correct at the application startup. Let's modify begging of the file: 
 ```
+"data.username","data.password","data.valid"
 demo,demo,true
 demo,demo,true
 demo,demo,true
