@@ -6,7 +6,7 @@ url: http://nixer-io.github.io
 baseurl: ""
 
 project:
-    version: 0.1.1.1 # version of Nixer Spring plugin
+    version: 0.1.1.2 # version of Nixer Spring plugin
     github_url: https://github.com/nixer-io/nixer-spring-plugin
     mvn_repo_url: https://mvnrepository.com/artifact/io.nixer
 
