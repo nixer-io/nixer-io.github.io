@@ -310,7 +310,7 @@ FailedLoginRatioRegistry : FAILED_LOGIN_RATIO event was caught with ratio: 1.0
 ``` 
 Because in the data we only have non-existing users, failed-login-ratio is 100%. When limit for `minimumSampleSize` is exceeded (10 attempts), all further attempts are required captcha which is not solved by this test, which causes the assertion failure. 
 
-Now, let's examine how the application would act if there would be successful login attempts in the data as well. Let's open `test-cs.data.csv` file in in `e2e-tests` directory. Columns of this _csv_ file contain `username,password,valid` entries, `valid` is a boolean value stating whether the credentials are correct (user with this password exists in the tested system). For this example I will modify head of the file by adding correct `demo:demo,true` login attempts. These credentials are configured to be correct at the application startup. Let's modify begging of the file: 
+Now, let's examine how the application would act if there would be successful login attempts in the data as well. Let's open `test-cs.data.csv` file in in `e2e-tests` directory. Columns of this _csv_ file contain `username,password,valid` entries, `valid` is a boolean value stating whether the credentials are correct (user with this password exists in the tested system). For this example I will modify head of the file by adding correct `demo,demo,true` login attempts. These credentials are configured to be correct at the application startup. Let's modify begging of the file: 
 ```
 "data.username","data.password","data.valid"
 demo,demo,true
