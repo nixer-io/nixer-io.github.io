@@ -62,8 +62,8 @@
         </p>
 
         <ul class="bs-docs-footer-links muted">
-            {% if site.project.version %}
-                <li>Nixer Spring Plugin v{{ site.project.version }}</li>
+            {% if site.data.nixer_version.latest_release %}
+                <li>Nixer Spring Plugin v{{ site.data.nixer_version.latest_release }}</li>
             {% endif %}
             {% for l in site.links.footer %}
                 <li>&middot;</li>

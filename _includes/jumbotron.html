@@ -6,8 +6,8 @@
             <p class="lead">
                 <a href="{{ site.project.github_url }}" target="_blank" class="btn btn-outline-inverse btn-lg"><img src="../assets/img/github1.png" alt="GitHub"/></a>
             </p>
-            {% if site.project.version %}
-                <p class="version">Nixer Spring Plugin v{{ site.project.version }}</p>
+            {% if site.data.nixer_version.latest_release %}
+                <p class="version">Nixer Spring Plugin v{{ site.data.nixer_version.latest_release }}</p>
             {% endif %}
         </div>
     </div>
