@@ -4,6 +4,7 @@ homepage: true
 short_title: Getting Started
 side_menu: true
 permalink: /getting-started/
+nixer_version: 0.1.1.1
 ---
 
 # Getting Started
@@ -80,8 +81,8 @@ We are going to start this tutorial by using two of them, the mandatory [Core mo
 
 Let’s add them as dependencies to the `build.gradle` file:
 ```
-implementation "io.nixer:nixer-plugin-core:{{ site.project.version }}"
-implementation "io.nixer:nixer-plugin-captcha:{{ site.project.version }}"
+implementation "io.nixer:nixer-plugin-core:{{ page.nixer_version }}"
+implementation "io.nixer:nixer-plugin-captcha:{{ page.nixer_version }}"
 ```
 
 Now, we can start adding features to the application. The plugin leverages Spring Boot's [auto configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-auto-configuration) mechanism, so needed beans will be created automatically.

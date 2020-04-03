@@ -27,7 +27,7 @@ It requires dependency to Core Nixer plugin as well.
 
 ```kotlin
 dependencies {
-    implementation("io.nixer:nixer-plugin-core:{{ site.project.version }}")
+    implementation("io.nixer:nixer-plugin-core:{{ site.data.nixer_version.latest_release }}")
 }
 ```
 
