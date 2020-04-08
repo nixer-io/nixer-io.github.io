@@ -10,6 +10,8 @@ permalink: /examples/
 
 For full usage examples please see the following:
 
-* [Internal example, most up-to-date, local dependency resolution](https://github.com/nixer-io/nixer-spring-plugin/tree/master/samples/example)
+* Reference implementation, most up-to-date as developed together with the plugin, uses local dependency resolution,
+can be found in [the plugin's repository](https://github.com/nixer-io/nixer-spring-plugin/tree/master/samples/example).
 
-* [External example, aligned to the latest release, real dependency resolution](https://github.com/nixer-io/nixer-spring-plugin-integrations/tree/master-with-nixer-plugin/nixer-spring-plugin-demo-app)
+* External application example, from the [Getting Started]({{ site.baseurl }}/getting-started) tutorial, using real dependency resolution
+can be found [here](https://github.com/nixer-io/nixer-spring-plugin-integrations/tree/with/nixer-plugin-getting-started/nixer-spring-plugin-demo-app).
