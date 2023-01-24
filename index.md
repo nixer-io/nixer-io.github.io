@@ -7,6 +7,8 @@ side_menu: true
 
 # Docs Home
 
+##### This project is deprecated and archived.
+
 This is home to the documentation for [Nixer Spring Plugin](https://github.com/nixer-io/nixer-spring-plugin), a plugin for dealing with credential stuffing attacks.
 
 ---
